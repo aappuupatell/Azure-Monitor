@@ -1,0 +1,1144 @@
+{
+  "version": "Notebook/1.0",
+  "items": [
+    {
+      "type": 9,
+      "content": {
+        "version": "KqlParameterItem/1.0",
+        "crossComponentResources": [
+          "{mappedWorkspace}"
+        ],
+        "parameters": [
+          {
+            "id": "4f746974-5b8c-4f59-9277-4240b8aaf1b5",
+            "version": "KqlParameterItem/1.0",
+            "name": "currentWorkbook",
+            "type": 1,
+            "isGlobal": true,
+            "value": "Overview",
+            "isHiddenWhenLocked": true
+          },
+          {
+            "id": "67dcb2cb-14b1-4d77-b52b-f728abbf43a2",
+            "version": "KqlParameterItem/1.0",
+            "name": "mappedTenantId",
+            "type": 1,
+            "query": "resources\r\n| take 1\r\n| project tenantId",
+            "crossComponentResources": [
+              "value::tenant"
+            ],
+            "isHiddenWhenLocked": true,
+            "timeContext": {
+              "durationMs": 86400000
+            },
+            "queryType": 1,
+            "resourceType": "microsoft.resources/tenants"
+          },
+          {
+            "id": "0a66fd55-a5d0-4153-9615-4dfa1dbf6b87",
+            "version": "KqlParameterItem/1.0",
+            "name": "savedMapping",
+            "type": 1,
+            "isRequired": true,
+            "query": "{\"version\":\"MsGraphEndpoint/1.0\",\"data\":null,\"headers\":[],\"method\":\"GET\",\"path\":\"/beta/admin/windows/updates/resourceConnections/\",\"urlParams\":[],\"transformers\":[{\"type\":\"jsonpath\",\"settings\":{\"tablePath\":\"$.value\",\"columns\":[{\"path\":\"$.id\",\"columnid\":\"id\",\"columnType\":\"string\"},{\"path\":\"$.state\",\"columnid\":\"state\",\"columnType\":\"string\"},{\"path\":\"$.azureSubscriptionId\",\"columnid\":\"azureSubscriptionId\",\"columnType\":\"string\"},{\"path\":\"$.azureResourceGroupName\",\"columnid\":\"azureResourceGroupName\",\"columnType\":\"string\"},{\"path\":\"$.workspaceName\",\"columnid\":\"workspaceName\",\"columnType\":\"string\"}]}}]}",
+            "isHiddenWhenLocked": true,
+            "timeContext": {
+              "durationMs": 86400000
+            },
+            "queryType": 14
+          },
+          {
+            "version": "KqlParameterItem/1.0",
+            "name": "savedMappingSubscriptionId",
+            "type": 1,
+            "isRequired": true,
+            "query": "{\"version\":\"MsGraphEndpoint/1.0\",\"data\":null,\"headers\":[],\"method\":\"GET\",\"path\":\"/beta/admin/windows/updates/resourceConnections/\",\"urlParams\":[],\"transformers\":[{\"type\":\"jsonpath\",\"settings\":{\"tablePath\":\"$.value\",\"columns\":[{\"path\":\"$.azureSubscriptionId\",\"columnid\":\"azureSubscriptionId\",\"columnType\":\"string\"}]}}]}",
+            "isHiddenWhenLocked": true,
+            "timeContext": {
+              "durationMs": 86400000
+            },
+            "queryType": 14,
+            "id": "f5393ae4-0179-40a2-a1e2-47e8bde4eb07"
+          },
+          {
+            "version": "KqlParameterItem/1.0",
+            "name": "savedMappingWorkspaceName",
+            "type": 1,
+            "isRequired": true,
+            "query": "{\"version\":\"MsGraphEndpoint/1.0\",\"data\":null,\"headers\":[],\"method\":\"GET\",\"path\":\"/beta/admin/windows/updates/resourceConnections/\",\"urlParams\":[],\"transformers\":[{\"type\":\"jsonpath\",\"settings\":{\"tablePath\":\"$.value\",\"columns\":[{\"path\":\"$.workspaceName\",\"columnid\":\"workspaceName\",\"columnType\":\"string\"}]}}]}",
+            "isHiddenWhenLocked": true,
+            "timeContext": {
+              "durationMs": 86400000
+            },
+            "queryType": 14,
+            "id": "212eae3e-2a6b-41e9-af99-b6796dfe45c2"
+          },
+          {
+            "id": "e6a45232-9c42-46c6-a663-dcfc11b6f8ed",
+            "version": "KqlParameterItem/1.0",
+            "name": "savedMappingResourceGroupName",
+            "type": 1,
+            "query": "{\"version\":\"MsGraphEndpoint/1.0\",\"data\":null,\"headers\":[],\"method\":\"GET\",\"path\":\"/beta/admin/windows/updates/resourceConnections/\",\"urlParams\":[],\"transformers\":[{\"type\":\"jsonpath\",\"settings\":{\"tablePath\":\"$.value\",\"columns\":[{\"path\":\"$.azureResourceGroupName\",\"columnid\":\"azureResourceGroupName\",\"columnType\":\"string\"}]}}]}",
+            "isHiddenWhenLocked": true,
+            "queryType": 14
+          },
+          {
+            "id": "7a2bb320-fa9c-45c8-bbf6-942c8b3a4b0e",
+            "version": "KqlParameterItem/1.0",
+            "name": "apiResultSubscription",
+            "label": "subscription",
+            "type": 6,
+            "query": "{\"version\":\"MsGraphEndpoint/1.0\",\"data\":null,\"headers\":[],\"method\":\"GET\",\"path\":\"/beta/admin/windows/updates/resourceConnections/\",\"urlParams\":[],\"transformers\":[{\"type\":\"jsonpath\",\"settings\":{\"tablePath\":\"$.value\",\"columns\":[{\"path\":\"$.azureSubscriptionId\",\"columnid\":\"azureSubscriptionid\",\"columnType\":\"string\",\"substringRegexMatch\":\"^\",\"substringReplace\":\"/subscriptions/\"},{\"path\":\"$.azureSubscriptionId\",\"columnid\":\"selected\",\"columnType\":\"string\",\"substringRegexMatch\":\".*\",\"substringReplace\":\"true\"}]}}]}",
+            "typeSettings": {
+              "additionalResourceOptions": [],
+              "showDefault": false
+            },
+            "timeContext": {
+              "durationMs": 86400000
+            },
+            "queryType": 14
+          },
+          {
+            "id": "01c6d66e-3f87-4e8a-8be6-0accbe4f4036",
+            "version": "KqlParameterItem/1.0",
+            "name": "apiResultWorkspace",
+            "label": "workspace",
+            "type": 5,
+            "isRequired": true,
+            "query": "resources\r\n| where type == \"microsoft.operationalinsights/workspaces\"\r\n| where tolower(id) == tolower(\"/subscriptions/{savedMappingSubscriptionId}/resourceGroups/{savedMappingResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{savedMappingWorkspaceName}\")",
+            "crossComponentResources": [
+              "{apiResultSubscription}"
+            ],
+            "typeSettings": {
+              "additionalResourceOptions": [],
+              "showDefault": false
+            },
+            "timeContext": {
+              "durationMs": 86400000
+            },
+            "queryType": 1
+          }
+        ],
+        "style": "pills",
+        "queryType": 0,
+        "resourceType": "microsoft.operationalinsights/workspaces"
+      },
+      "conditionalVisibility": {
+        "parameterName": "NonExistentParam",
+        "comparison": "isEqualTo",
+        "value": "true"
+      },
+      "name": "parameters - 2"
+    },
+    {
+      "type": 9,
+      "content": {
+        "version": "KqlParameterItem/1.0",
+        "parameters": [
+          {
+            "id": "964bc0e1-281f-4498-8712-54154c7a707a",
+            "version": "KqlParameterItem/1.0",
+            "name": "selectedSubscription",
+            "label": "Subscription",
+            "type": 6,
+            "query": "{\"version\":\"MsGraphEndpoint/1.0\",\"data\":null,\"headers\":[],\"method\":\"GET\",\"path\":\"beta/admin/windows/updates/reports/workspaces\",\"urlParams\":[],\"transformers\":[{\"type\":\"jsonpath\",\"settings\":{\"tablePath\":\"$.value\",\"columns\":[{\"path\":\"$.subscriptionId\",\"columnid\":\"subscriptionId\",\"columnType\":\"string\"}]}}]}",
+            "typeSettings": {
+              "additionalResourceOptions": [],
+              "showDefault": false
+            },
+            "timeContext": {
+              "durationMs": 86400000
+            },
+            "queryType": 14,
+            "value": null
+          },
+          {
+            "id": "db1b2a83-9b84-48a5-abd5-75523e351a51",
+            "version": "KqlParameterItem/1.0",
+            "name": "selectedWorkspace",
+            "label": "Workspace",
+            "type": 5,
+            "query": "{\"version\":\"MsGraphEndpoint/1.0\",\"data\":null,\"headers\":[],\"method\":\"GET\",\"path\":\"beta/admin/windows/updates/reports/workspaces?$filter=subscriptionId eq '{selectedSubscription:id}'\",\"urlParams\":[],\"transformers\":[{\"type\":\"jsonpath\",\"settings\":{\"tablePath\":\"$..value\",\"columns\":[]}}]}",
+            "typeSettings": {
+              "additionalResourceOptions": [],
+              "showDefault": false
+            },
+            "timeContext": {
+              "durationMs": 86400000
+            },
+            "queryType": 14,
+            "value": null
+          }
+        ],
+        "style": "above",
+        "queryType": 14
+      },
+      "name": "parameters - 5"
+    },
+    {
+      "type": 9,
+      "content": {
+        "version": "KqlParameterItem/1.0",
+        "crossComponentResources": [
+          "{mappedSubscription}"
+        ],
+        "parameters": [
+          {
+            "id": "1103543a-a1b3-4266-a366-ec62b7469e02",
+            "version": "KqlParameterItem/1.0",
+            "name": "mappedSubscription",
+            "type": 6,
+            "isRequired": true,
+            "query": "resources\r\n| extend Value = iff(isempty(\"{selectedSubscription}\"), \"{apiResultSubscription}\", \"{selectedSubscription}\")\r\n| limit 1\r\n| project Value, selected=iff(isempty(Value), 0, 1)",
+            "crossComponentResources": [
+              "value::all"
+            ],
+            "typeSettings": {
+              "additionalResourceOptions": [],
+              "showDefault": false
+            },
+            "queryType": 1,
+            "resourceType": "microsoft.resourcegraph/resources"
+          },
+          {
+            "id": "cbcc2c52-83fd-4407-a4b3-75ca187e1c52",
+            "version": "KqlParameterItem/1.0",
+            "name": "APIWorkspaceId",
+            "type": 1,
+            "query": "resources\r\n| extend Value = iff(isempty(\"{apiResultWorkspace}\"), \"\", \"{apiResultWorkspace:value}\")\r\n| limit 1\r\n| project Value, selected=iff(isempty(Value), 0, 1)",
+            "crossComponentResources": [
+              "{mappedSubscription}"
+            ],
+            "queryType": 1,
+            "resourceType": "microsoft.resourcegraph/resources"
+          },
+          {
+            "id": "cea0a22d-c08d-48e0-a8b4-cb89e1bb26da",
+            "version": "KqlParameterItem/1.0",
+            "name": "SelectedWorkspaceId",
+            "type": 1,
+            "query": "resources\r\n| extend Value = iff(isempty(\"{selectedWorkspace}\"), \"\", \"{selectedWorkspace:id}\")\r\n| limit 1\r\n| project Value, selected=iff(isempty(Value), 0, 1)",
+            "crossComponentResources": [
+              "{mappedSubscription}"
+            ],
+            "queryType": 1,
+            "resourceType": "microsoft.resourcegraph/resources"
+          },
+          {
+            "id": "b4f804b6-52c8-47d2-84a8-5edf7e6a0c52",
+            "version": "KqlParameterItem/1.0",
+            "name": "mappedWorkspace",
+            "type": 5,
+            "query": "resources\r\n| extend Value = iff(isempty(\"{SelectedWorkspaceId}\"), \"{APIWorkspaceId}\", \"{SelectedWorkspaceId}\")\r\n| where Value has id\r\n//| where Value has subscriptionId and Value has resourceGroup and Value has name\r\n//| project Value, selected=iff(isempty(Value), 0, 1)",
+            "crossComponentResources": [
+              "{mappedSubscription}"
+            ],
+            "typeSettings": {
+              "additionalResourceOptions": [],
+              "showDefault": false
+            },
+            "queryType": 1,
+            "resourceType": "microsoft.resourcegraph/resources"
+          }
+        ],
+        "style": "pills",
+        "queryType": 1,
+        "resourceType": "microsoft.resourcegraph/resources"
+      },
+      "conditionalVisibility": {
+        "parameterName": "TimeRange",
+        "comparison": "isNotEqualTo"
+      },
+      "name": "selected-workspace-parameters"
+    },
+    {
+      "type": 9,
+      "content": {
+        "version": "KqlParameterItem/1.0",
+        "crossComponentResources": [
+          "{mappedWorkspace}"
+        ],
+        "parameters": [
+          {
+            "id": "c125807a-963d-4ad7-9987-29aa58d1f66f",
+            "version": "KqlParameterItem/1.0",
+            "name": "isOnboarded",
+            "type": 1,
+            "isRequired": true,
+            "query": "UCClient\r\n| summarize number = count()\r\n| project iff(number > 0, \"true\", \"false\")",
+            "crossComponentResources": [
+              "{mappedWorkspace}"
+            ],
+            "isHiddenWhenLocked": true,
+            "timeContext": {
+              "durationMs": 604800000
+            },
+            "queryType": 0,
+            "resourceType": "microsoft.operationalinsights/workspaces"
+          },
+          {
+            "id": "55ad4c97-feeb-4f3a-96fc-58c0470d97bf",
+            "version": "KqlParameterItem/1.0",
+            "name": "_SnapshotTime",
+            "label": "Time Range",
+            "type": 1,
+            "query": "UCClient\r\n| where TimeGenerated >= ago(7d)\r\n| summarize max(TimeGenerated)",
+            "crossComponentResources": [
+              "{mappedWorkspace}"
+            ],
+            "isHiddenWhenLocked": true,
+            "queryType": 0,
+            "resourceType": "microsoft.operationalinsights/workspaces"
+          },
+          {
+            "id": "d90c8a98-a31e-452a-b132-534d0ef2833a",
+            "version": "KqlParameterItem/1.0",
+            "name": "DOSnapshotTime",
+            "type": 1,
+            "query": "UCDOStatus\r\n| where TimeGenerated >= ago(7d)\r\n| summarize max(TimeGenerated)",
+            "crossComponentResources": [
+              "{mappedWorkspace}"
+            ],
+            "isHiddenWhenLocked": true,
+            "queryType": 0,
+            "resourceType": "microsoft.operationalinsights/workspaces"
+          },
+          {
+            "id": "de0c6ce4-c9b2-4d74-9f62-0d171af80920",
+            "version": "KqlParameterItem/1.0",
+            "name": "_TimePicked",
+            "type": 1,
+            "query": "let _SnapshotTime = datetime({_SnapshotTime});\r\nprint TimePicked = format_datetime(_SnapshotTime, 'M/dd/yyyy')",
+            "crossComponentResources": [
+              "{mappedWorkspace}"
+            ],
+            "isHiddenWhenLocked": true,
+            "queryType": 0,
+            "resourceType": "microsoft.operationalinsights/workspaces",
+            "value": null
+          },
+          {
+            "id": "cd7cc227-779b-48d7-ae26-dbb331b9e77e",
+            "version": "KqlParameterItem/1.0",
+            "name": "_SecurityDate",
+            "type": 1,
+            "query": "let _SnapshotTime = datetime({_SnapshotTime});\r\nUCClientUpdateStatus\r\n| where TimeGenerated == _SnapshotTime\r\n| where UpdateCategory == \"WindowsQualityUpdate\" and UpdateClassification == \"Security\"\r\n| summarize arg_max(UpdateReleaseTime, *) by TimeGenerated\r\n| extend releaseTime =  format_datetime(UpdateReleaseTime, 'M/dd/yyyy')\r\n| summarize by releaseTime",
+            "crossComponentResources": [
+              "{mappedWorkspace}"
+            ],
+            "isHiddenWhenLocked": true,
+            "queryType": 0,
+            "resourceType": "microsoft.operationalinsights/workspaces",
+            "value": null
+          },
+          {
+            "id": "c58996b9-35a6-4908-b199-4e94746d5e9d",
+            "version": "KqlParameterItem/1.0",
+            "name": "_FeatureWin10Version",
+            "type": 1,
+            "query": "let _SnapshotTime = datetime({_SnapshotTime});\r\nUCClientUpdateStatus\r\n| where TimeGenerated == _SnapshotTime\r\n| where UpdateCategory == \"WindowsFeatureUpdate\" and UpdateClassification == \"Upgrade\" and TargetVersion has \"Windows 10\" and isnotempty(UpdateReleaseTime)\r\n| summarize by TargetVersion\r\n| take 1",
+            "crossComponentResources": [
+              "{mappedWorkspace}"
+            ],
+            "isHiddenWhenLocked": true,
+            "queryType": 0,
+            "resourceType": "microsoft.operationalinsights/workspaces",
+            "value": null
+          },
+          {
+            "id": "c10659cf-6cb3-4f03-9580-d309b2cc3aa6",
+            "version": "KqlParameterItem/1.0",
+            "name": "_FeatureWin11Version",
+            "type": 1,
+            "query": "let _SnapshotTime = datetime({_SnapshotTime});\r\nUCClientUpdateStatus\r\n| where TimeGenerated == _SnapshotTime\r\n| where UpdateCategory == \"WindowsFeatureUpdate\" and UpdateClassification == \"Upgrade\" and TargetVersion has \"Windows 11\" and isnotempty(UpdateReleaseTime)\r\n| summarize by TargetVersion\r\n| take 1",
+            "crossComponentResources": [
+              "{mappedWorkspace}"
+            ],
+            "isHiddenWhenLocked": true,
+            "queryType": 0,
+            "resourceType": "microsoft.operationalinsights/workspaces",
+            "value": null
+          },
+          {
+            "id": "d89546de-9bb6-4f1c-89e0-20b4f9a6f09d",
+            "version": "KqlParameterItem/1.0",
+            "name": "_KBArticleLink",
+            "type": 1,
+            "query": "let _SnapshotTime = datetime({_SnapshotTime});\r\nlet KBLink = \"https://support.microsoft.com/help/\";\r\nUCClientUpdateStatus\r\n| where TimeGenerated == _SnapshotTime\r\n| where UpdateCategory == \"WindowsQualityUpdate\" and UpdateClassification == \"Security\"\r\n| extend KBNumberLink = substring(TargetKBNumber, 2,8)\r\n| sort by toint(KBNumberLink) desc\r\n| project-keep KBNumberLink\r\n| extend KBLinkText = iff(isnotempty(KBNumberLink), strcat(KBLink, KBNumberLink), \"\")\r\n| summarize arg_max(KBNumberLink, *)\r\n| take 1\r\n| summarize by KBLinkText",
+            "crossComponentResources": [
+              "{mappedWorkspace}"
+            ],
+            "isHiddenWhenLocked": true,
+            "queryType": 0,
+            "resourceType": "microsoft.operationalinsights/workspaces",
+            "value": null
+          }
+        ],
+        "style": "pills",
+        "queryType": 0,
+        "resourceType": "microsoft.operationalinsights/workspaces"
+      },
+      "conditionalVisibility": {
+        "parameterName": "TimeRange",
+        "comparison": "isNotEqualTo"
+      },
+      "name": "post-workspace-selection-parameters"
+    },
+    {
+      "type": 12,
+      "content": {
+        "version": "NotebookGroup/1.0",
+        "groupType": "editable",
+        "items": [
+          {
+            "type": 1,
+            "content": {
+              "json": "<img src=\"https://admin.microsoft.com/images/EmptyState/EmptyState_illustration_admin-action_group-of-cards-with-pencil_200px.png\"\nstyle=\"display: block;width:350px;margin-left:auto;margin-right:auto;\">\n</img>\n<br></br>\n\n<h2 markdown=\"1\" style=\"display:block;text-align:center;margin-left:auto;margin-right:auto;\">\nMonitor updates across your Windows devices \n</h2>\n\n<p markdown=\"1\" style=\"display:block;width:45%;text-align:center;margin-left:auto;margin-right:auto;\">\nTrack the progress of your update deployments and report on devices with compliance issues. \n\n<br></br>\n<a href=\"https://docs.microsoft.com/en-us/windows/deployment/update/update-compliance-v2-overview\" target='_blank'>Learn more about Windows Update for Business reports</a> and make sure you <a href=\"https://docs.microsoft.com/en-us/windows/deployment/update/update-compliance-v2-prerequisites\" target='_blank'>meet the prerequisites.</a>\n</p>"
+            },
+            "name": "OnboardingDescription",
+            "styleSettings": {
+              "margin": "0",
+              "padding": "50"
+            }
+          },
+          {
+            "type": 12,
+            "content": {
+              "version": "NotebookGroup/1.0",
+              "groupType": "editable",
+              "items": []
+            },
+            "name": "group - 1"
+          },
+          {
+            "type": 11,
+            "content": {
+              "version": "LinkItem/1.0",
+              "style": "paragraph",
+              "links": [
+                {
+                  "id": "d61c87c7-cf34-4c03-86e6-00fbe65cb373",
+                  "linkTarget": "WorkbookTemplate",
+                  "linkLabel": "Get started",
+                  "style": "primary",
+                  "linkIsContextBlade": true,
+                  "workbookContext": {
+                    "componentIdSource": "workbook",
+                    "resourceIdsSource": "workbook",
+                    "templateIdSource": "static",
+                    "templateId": "community-workbooks/UpdateCompliance/Windows Update for Business reports enrollment",
+                    "typeSource": "workbook",
+                    "gallerySource": "workbook",
+                    "locationSource": "default",
+                    "passSpecificParams": true,
+                    "templateParameters": [
+                      {
+                        "name": "SavedMapping",
+                        "source": "parameter",
+                        "value": "savedMapping"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "name": "links - 4"
+          }
+        ],
+        "exportParameters": true
+      },
+      "conditionalVisibility": {
+        "parameterName": "mappedWorkspace",
+        "comparison": "isEqualTo"
+      },
+      "customWidth": "100",
+      "name": "PreonboardingGroup"
+    },
+    {
+      "type": 12,
+      "content": {
+        "version": "NotebookGroup/1.0",
+        "groupType": "editable",
+        "items": [
+          {
+            "type": 1,
+            "content": {
+              "json": "**Tenant ID**: {mappedTenantId} &nbsp;&nbsp; **Subscription**: {mappedSubscription:name} &nbsp;&nbsp; **Resource group**: {savedMappingResourceGroupName} &nbsp;&nbsp; **Workspace**: {mappedWorkspace:name}"
+            },
+            "customWidth": "60",
+            "name": "text - 6"
+          },
+          {
+            "type": 11,
+            "content": {
+              "version": "LinkItem/1.0",
+              "style": "paragraph",
+              "links": [
+                {
+                  "id": "6b7dda39-6e2e-4f50-a2ed-b55355839eb0",
+                  "linkTarget": "WorkbookTemplate",
+                  "linkLabel": "Change tenant scoped workspace",
+                  "style": "link",
+                  "linkIsContextBlade": true,
+                  "workbookContext": {
+                    "componentIdSource": "workbook",
+                    "resourceIdsSource": "workbook",
+                    "templateIdSource": "static",
+                    "templateId": "community-workbooks/UpdateCompliance/Windows Update for Business reports enrollment",
+                    "typeSource": "workbook",
+                    "gallerySource": "workbook",
+                    "locationSource": "default",
+                    "passSpecificParams": true,
+                    "templateParameters": [
+                      {
+                        "name": "SavedMapping",
+                        "source": "parameter",
+                        "value": "savedMapping"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "customWidth": "35",
+            "name": "links - 7"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<br></br><br></br>"
+            },
+            "name": "text - 3"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "<img src=\"https://res-1.cdn.office.net/admincenter/admin-main/2022.6.30.4/45d61a60d22c9f6dfce067f9991d8c0b.svg\"\nstyle=\"display: block;width:30%;margin-left:auto;margin-right:auto;\">\n</img>\n<br></br>\n\n<h2 markdown=\"1\" style=\"display:block;text-align:center;margin-left:auto;margin-right:auto;\">\nWaiting for Windows Update for Business reports data\n</h2>\n\n<p markdown=\"1\" style=\"display:block;width:45%;text-align:center;margin-left:auto;margin-right:auto;\">\nOnce you have met all the requirements, we will process your data as a first-time setup. This will typically take up to 24 hours. Check back soon!\n</p>"
+            },
+            "name": "OnboardingDescription",
+            "styleSettings": {
+              "margin": "0",
+              "padding": "50"
+            }
+          }
+        ],
+        "exportParameters": true
+      },
+      "conditionalVisibilities": [
+        {
+          "parameterName": "mappedWorkspace",
+          "comparison": "isNotEqualTo"
+        },
+        {
+          "parameterName": "isOnboarded",
+          "comparison": "isNotEqualTo",
+          "value": "true"
+        }
+      ],
+      "customWidth": "100",
+      "name": "PostonboardingGroup"
+    },
+    {
+      "type": 12,
+      "content": {
+        "version": "NotebookGroup/1.0",
+        "groupType": "editable",
+        "loadType": "always",
+        "items": [
+          {
+            "type": 1,
+            "content": {
+              "json": "# Windows Update for Business reports\r\n\r\nUse Windows Update for Business reports to check the progress of Windows update deployments and report on devices with compliance issues. This data is updated every 24 hours. *** Last updated: {_TimePicked} ***\r\n\r\n\r\n"
+            },
+            "name": "WelcomeMessage"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "**Tenant ID**: {mappedTenantId} &nbsp;&nbsp; **Subscription**: {mappedSubscription:name} &nbsp;&nbsp; **Resource group**: {savedMappingResourceGroupName} &nbsp;&nbsp; **Workspace**: {savedMappingWorkspaceName}"
+            },
+            "customWidth": "60",
+            "name": "text - 6"
+          },
+          {
+            "type": 11,
+            "content": {
+              "version": "LinkItem/1.0",
+              "style": "paragraph",
+              "links": [
+                {
+                  "id": "6b7dda39-6e2e-4f50-a2ed-b55355839eb0",
+                  "linkTarget": "WorkbookTemplate",
+                  "linkLabel": "Change tenant scoped workspace",
+                  "style": "link",
+                  "linkIsContextBlade": true,
+                  "workbookContext": {
+                    "componentIdSource": "workbook",
+                    "resourceIdsSource": "workbook",
+                    "templateIdSource": "static",
+                    "templateId": "community-workbooks/UpdateCompliance/Windows Update for Business reports enrollment",
+                    "typeSource": "workbook",
+                    "gallerySource": "workbook",
+                    "locationSource": "default",
+                    "passSpecificParams": true,
+                    "templateParameters": [
+                      {
+                        "name": "SavedMapping",
+                        "source": "parameter",
+                        "value": "savedMapping"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "customWidth": "35",
+            "name": "links - 7"
+          },
+          {
+            "type": 11,
+            "content": {
+              "version": "LinkItem/1.0",
+              "style": "tabs",
+              "links": [
+                {
+                  "id": "b3f4c34c-d421-4373-a567-8e3b10e63235",
+                  "cellValue": "currentWorkbook",
+                  "linkTarget": "parameter",
+                  "linkLabel": "Overview",
+                  "subTarget": "Overview",
+                  "style": "link"
+                },
+                {
+                  "id": "a55effea-5f5f-45c2-89ea-8032affc3541",
+                  "cellValue": "currentWorkbook",
+                  "linkTarget": "parameter",
+                  "linkLabel": "Quality updates",
+                  "subTarget": "QualityUpdates",
+                  "style": "link"
+                },
+                {
+                  "id": "748a4c57-143e-4600-81db-1a44fca6aabf",
+                  "cellValue": "currentWorkbook",
+                  "linkTarget": "parameter",
+                  "linkLabel": "Feature updates",
+                  "subTarget": "FeatureUpdates",
+                  "style": "link"
+                },
+                {
+                  "id": "4683d58f-8d9e-4d83-a456-b8aac636e921",
+                  "cellValue": "currentWorkbook",
+                  "linkTarget": "parameter",
+                  "linkLabel": "Driver Updates",
+                  "subTarget": "DriverUpdates",
+                  "style": "link"
+                },
+                {
+                  "id": "a58ab8ff-ed50-487d-b661-4d680b693571",
+                  "cellValue": "currentWorkbook",
+                  "linkTarget": "parameter",
+                  "linkLabel": "Delivery Optimization",
+                  "subTarget": "DeliveryOptimization",
+                  "style": "link"
+                }
+              ]
+            },
+            "name": "WorkbookTabControl"
+          },
+          {
+            "type": 12,
+            "content": {
+              "version": "NotebookGroup/1.0",
+              "groupType": "editable",
+              "items": [
+                {
+                  "type": 12,
+                  "content": {
+                    "version": "NotebookGroup/1.0",
+                    "groupType": "editable",
+                    "title": "News and links",
+                    "expandable": true,
+                    "expanded": true,
+                    "items": [
+                      {
+                        "type": 1,
+                        "content": {
+                          "json": "** What's new? **\r\n\r\nWindows Update for Business reports is now in general availability. Within the new reports, you can easily monitor your Feature Updates, Quality updates, Driver Updates, and view Delivery Optimization usage data."
+                        },
+                        "customWidth": "25",
+                        "name": "WhatsNew"
+                      },
+                      {
+                        "type": 1,
+                        "content": {
+                          "json": "** Related links **\r\n\r\nNow generally available: <a href=\"https://techcommunity.microsoft.com/t5/windows-it-pro-blog/now-generally-available-windows-update-for-business-reports/ba-p/3677018\">Windows Update for Business reports </a>\r\n\r\nKeep your Windows client devices up to date with <a href=\"https://docs.microsoft.com/windows/deployment/update/waas-manage-updates-wufb?WT.mc_id=Portal-fx\">Windows Update for Business</a>\r\n\r\nManage Driver Updates with the <a href=\"https://techcommunity.microsoft.com/t5/windows-it-pro-blog/commercial-driver-and-firmware-servicing-is-publicly-available/ba-p/3741194\">Windows Update for Business deployment service</a>"
+                        },
+                        "customWidth": "25",
+                        "name": "RelatedLinks"
+                      },
+                      {
+                        "type": 1,
+                        "content": {
+                          "json": "** Windows 11 **\r\n\r\nGet started with a Windows 11 Pilot today using feature targeting in Intnue or the management tool of your choice. Learn how to create a <a href=\"https://learn.microsoft.com/en-us/windows/whats-new/windows-11-plan#deployment-planning\">deployment plan</a>.\r\n\r\nRead about how Microsoft successfully rolled out Windows 11 to 190,000 devices. <a href=\"https://techcommunity.microsoft.com/t5/windows-it-pro-blog/now-generally-available-windows-update-for-business-reports/ba-p/3677018\">Microsoft's speedy upgrade to Windows 11</a>.\r\n\r\nNeed help? Eligible customers may also request deployment assistance from <a href=\"https://aka.ms/FastTrackWindowsEnt\">FastTrack</a>."
+                        },
+                        "customWidth": "25",
+                        "name": "RelatedLinks - Copy"
+                      }
+                    ]
+                  },
+                  "name": "GetStartedWithUpdateCompliance"
+                },
+                {
+                  "type": 3,
+                  "content": {
+                    "version": "KqlItem/1.0",
+                    "query": "let SnapshotTime = datetime({_SnapshotTime});\r\nUCClient\r\n| where TimeGenerated == SnapshotTime\r\n| extend Title = \"Total devices\"\r\n| extend Subtitle = \"Total\"\r\n| extend SeeDeviceDistribution = \"View details\"\r\n| summarize TotalDevices=count() by SeeDeviceDistribution, Title, Subtitle, SnapshotTime\r\n",
+                    "size": 3,
+                    "title": "Total devices",
+                    "noDataMessage": "No devices",
+                    "queryType": 0,
+                    "resourceType": "microsoft.operationalinsights/workspaces",
+                    "crossComponentResources": [
+                      "{mappedWorkspace}"
+                    ],
+                    "visualization": "tiles",
+                    "tileSettings": {
+                      "titleContent": {
+                        "columnMatch": "Title"
+                      },
+                      "subtitleContent": {
+                        "columnMatch": "Subtitle",
+                        "formatter": 1
+                      },
+                      "rightContent": {
+                        "columnMatch": "TotalDevices",
+                        "formatter": 1,
+                        "numberFormat": {
+                          "unit": 17,
+                          "options": {
+                            "style": "decimal",
+                            "maximumFractionDigits": 1
+                          }
+                        }
+                      },
+                      "secondaryContent": {
+                        "columnMatch": "SeeDeviceDistribution",
+                        "formatter": 7,
+                        "formatOptions": {
+                          "linkTarget": "WorkbookTemplate",
+                          "linkIsContextBlade": true,
+                          "workbookContext": {
+                            "componentIdSource": "workbook",
+                            "resourceIdsSource": "workbook",
+                            "templateIdSource": "static",
+                            "templateId": "community-workbooks/UpdateCompliance/Total devices",
+                            "typeSource": "workbook",
+                            "gallerySource": "workbook",
+                            "locationSource": "default",
+                            "passSpecificParams": true,
+                            "templateParameters": [
+                              {
+                                "name": "_SnapshotTime",
+                                "source": "column",
+                                "value": "Column1"
+                              },
+                              {
+                                "name": "mappedSubscription",
+                                "source": "parameter",
+                                "value": "mappedSubscription"
+                              },
+                              {
+                                "name": "mappedWorkspace",
+                                "source": "parameter",
+                                "value": "mappedWorkspace"
+                              }
+                            ],
+                            "viewerMode": false
+                          },
+                          "bladeOpenContext": {
+                            "bladeParameters": []
+                          }
+                        }
+                      },
+                      "showBorder": true
+                    }
+                  },
+                  "customWidth": "0",
+                  "name": "TotalEnrolledDevices",
+                  "styleSettings": {
+                    "margin": "10px 10px"
+                  }
+                },
+                {
+                  "type": 3,
+                  "content": {
+                    "version": "KqlItem/1.0",
+                    "query": "let _SnapshotTime = datetime({_SnapshotTime});\r\nlet DeviceAlert = UCDeviceAlert\r\n| where TimeGenerated == _SnapshotTime\r\n| where AlertStatus == \"Active\";\r\nlet UpdateAlert = UCUpdateAlert\r\n| where TimeGenerated == _SnapshotTime\r\n| where AlertStatus == \"Active\";\r\nDeviceAlert\r\n| union (UpdateAlert)\r\n| extend Title = \"Total active alerts\"\r\n| extend ViewDetail = \"View details\"\r\n| extend Subtitle = \"Total\"\r\n| summarize ActiveAlerts = count() by Title, ViewDetail, Subtitle, _SnapshotTime",
+                    "size": 3,
+                    "title": "Total active alerts",
+                    "noDataMessage": "no alerts",
+                    "queryType": 0,
+                    "resourceType": "microsoft.operationalinsights/workspaces",
+                    "crossComponentResources": [
+                      "{mappedWorkspace}"
+                    ],
+                    "visualization": "tiles",
+                    "tileSettings": {
+                      "titleContent": {
+                        "columnMatch": "Title"
+                      },
+                      "subtitleContent": {
+                        "columnMatch": "Subtitle",
+                        "formatter": 1
+                      },
+                      "leftContent": {
+                        "columnMatch": "ActiveAlerts",
+                        "formatter": 18,
+                        "formatOptions": {
+                          "thresholdsOptions": "icons",
+                          "thresholdsGrid": [
+                            {
+                              "operator": "Default",
+                              "thresholdValue": null,
+                              "representation": "4",
+                              "text": ""
+                            }
+                          ]
+                        }
+                      },
+                      "rightContent": {
+                        "columnMatch": "ActiveAlerts",
+                        "formatter": 1,
+                        "numberFormat": {
+                          "unit": 17,
+                          "options": {
+                            "style": "decimal",
+                            "maximumFractionDigits": 1
+                          }
+                        }
+                      },
+                      "secondaryContent": {
+                        "columnMatch": "ViewDetail",
+                        "formatter": 7,
+                        "formatOptions": {
+                          "linkTarget": "WorkbookTemplate",
+                          "linkIsContextBlade": true,
+                          "workbookContext": {
+                            "componentIdSource": "workbook",
+                            "resourceIdsSource": "workbook",
+                            "templateIdSource": "static",
+                            "templateId": "community-workbooks/UpdateCompliance/Active alerts",
+                            "typeSource": "workbook",
+                            "gallerySource": "workbook",
+                            "locationSource": "default",
+                            "passSpecificParams": true,
+                            "templateParameters": [
+                              {
+                                "name": "mappedSubscription",
+                                "source": "parameter",
+                                "value": "mappedSubscription"
+                              },
+                              {
+                                "name": "mappedWorkspace",
+                                "source": "parameter",
+                                "value": "mappedWorkspace"
+                              },
+                              {
+                                "name": "_SnapshotTime",
+                                "source": "column",
+                                "value": "Column1"
+                              }
+                            ],
+                            "viewerMode": false
+                          }
+                        }
+                      },
+                      "showBorder": true
+                    }
+                  },
+                  "customWidth": "0",
+                  "name": "ActiveAlerts",
+                  "styleSettings": {
+                    "margin": "10px 10px"
+                  }
+                },
+                {
+                  "type": 3,
+                  "content": {
+                    "version": "KqlItem/1.0",
+                    "query": "let _SnapshotTime = datetime({_SnapshotTime});\r\nUCClient\r\n| where TimeGenerated == _SnapshotTime\r\n| where OSVersion has \"Windows 11\"\r\n| summarize Total = dcount(AzureADDeviceId), Title = \"Windows 11 adoption\", Subtitle = \"Installed devices\"\r\n| extend ViewDetail = \"View details\"",
+                    "size": 3,
+                    "title": "Windows 11",
+                    "noDataMessage": "No devices eligible for Windows 11",
+                    "queryType": 0,
+                    "resourceType": "microsoft.operationalinsights/workspaces",
+                    "crossComponentResources": [
+                      "{mappedWorkspace}"
+                    ],
+                    "visualization": "tiles",
+                    "tileSettings": {
+                      "titleContent": {
+                        "columnMatch": "Title"
+                      },
+                      "subtitleContent": {
+                        "columnMatch": "Subtitle",
+                        "formatter": 1
+                      },
+                      "leftContent": {
+                        "columnMatch": "ActiveAlerts",
+                        "formatter": 18,
+                        "formatOptions": {
+                          "thresholdsOptions": "icons",
+                          "thresholdsGrid": [
+                            {
+                              "operator": "Default",
+                              "thresholdValue": null,
+                              "representation": "success",
+                              "text": ""
+                            }
+                          ]
+                        }
+                      },
+                      "rightContent": {
+                        "columnMatch": "Total",
+                        "formatter": 1,
+                        "numberFormat": {
+                          "unit": 17,
+                          "options": {
+                            "style": "decimal",
+                            "maximumFractionDigits": 2
+                          }
+                        }
+                      },
+                      "secondaryContent": {
+                        "columnMatch": "ViewDetail",
+                        "formatter": 7,
+                        "formatOptions": {
+                          "linkTarget": "WorkbookTemplate",
+                          "linkIsContextBlade": true,
+                          "workbookContext": {
+                            "componentIdSource": "workbook",
+                            "resourceIdsSource": "workbook",
+                            "templateIdSource": "static",
+                            "templateId": "community-workbooks/UpdateCompliance/Windows 11 Status Report",
+                            "typeSource": "workbook",
+                            "gallerySource": "workbook",
+                            "locationSource": "default",
+                            "passSpecificParams": true,
+                            "templateParameters": [
+                              {
+                                "name": "mappedSubscription",
+                                "source": "parameter",
+                                "value": "mappedSubscription"
+                              },
+                              {
+                                "name": "mappedWorkspace",
+                                "source": "parameter",
+                                "value": "mappedWorkspace"
+                              },
+                              {
+                                "name": "_SnapshotTime",
+                                "source": "parameter",
+                                "value": "_SnapshotTime"
+                              }
+                            ],
+                            "viewerMode": false
+                          }
+                        }
+                      },
+                      "showBorder": true
+                    }
+                  },
+                  "customWidth": "0",
+                  "name": "Win11Eligibility",
+                  "styleSettings": {
+                    "margin": "10px 10px"
+                  }
+                },
+                {
+                  "type": 1,
+                  "content": {
+                    "json": ""
+                  },
+                  "name": "spacer text"
+                },
+                {
+                  "type": 3,
+                  "content": {
+                    "version": "KqlItem/1.0",
+                    "query": "let _SnapshotTime = datetime({_SnapshotTime});\r\nUCClient\r\n| where TimeGenerated == _SnapshotTime\r\n| summarize SecurityUpdateStatus = count() by OSSecurityUpdateStatus",
+                    "size": 3,
+                    "showAnalytics": true,
+                    "title": "Security update status",
+                    "showExportToExcel": true,
+                    "queryType": 0,
+                    "resourceType": "microsoft.operationalinsights/workspaces",
+                    "crossComponentResources": [
+                      "{mappedWorkspace}"
+                    ],
+                    "visualization": "piechart",
+                    "chartSettings": {
+                      "yAxis": [
+                        "SecurityUpdateStatus"
+                      ],
+                      "seriesLabelSettings": [
+                        {
+                          "seriesName": "Latest",
+                          "color": "blue"
+                        },
+                        {
+                          "seriesName": "NotLatest",
+                          "label": "Not Latest",
+                          "color": "orange"
+                        },
+                        {
+                          "seriesName": "MultipleSecurityUpdatesMissing",
+                          "label": "Multiple Security Updates Missing",
+                          "color": "red"
+                        }
+                      ]
+                    }
+                  },
+                  "customWidth": "45",
+                  "name": "OverallSecurityUpdateStatusChart"
+                },
+                {
+                  "type": 3,
+                  "content": {
+                    "version": "KqlItem/1.0",
+                    "query": "let _SnapshotTime = datetime({_SnapshotTime});\r\nUCClient\r\n| where TimeGenerated == _SnapshotTime\r\n| extend OSFeatureUpdateStatusModified = iff(OSFeatureUpdateStatus == \"Unknown\", \"Windows Insider Program\", OSFeatureUpdateStatus)\r\n| summarize FeatureUpdateStatus = count() by OSFeatureUpdateStatusModified",
+                    "size": 3,
+                    "showAnalytics": true,
+                    "title": "Feature update status",
+                    "showExportToExcel": true,
+                    "queryType": 0,
+                    "resourceType": "microsoft.operationalinsights/workspaces",
+                    "crossComponentResources": [
+                      "{mappedWorkspace}"
+                    ],
+                    "visualization": "piechart",
+                    "chartSettings": {
+                      "yAxis": [
+                        "FeatureUpdateStatus"
+                      ],
+                      "seriesLabelSettings": [
+                        {
+                          "seriesName": "Latest",
+                          "color": "blue"
+                        },
+                        {
+                          "seriesName": "NotLatest",
+                          "label": "Not Latest",
+                          "color": "orange"
+                        },
+                        {
+                          "seriesName": "MultipleSecurityUpdatesMissing",
+                          "label": "Multiple Security Updates Missing",
+                          "color": "red"
+                        }
+                      ]
+                    }
+                  },
+                  "customWidth": "45",
+                  "name": "OverallFeatureUpdateStatusChart"
+                }
+              ],
+              "exportParameters": true
+            },
+            "conditionalVisibility": {
+              "parameterName": "currentWorkbook",
+              "comparison": "isEqualTo",
+              "value": "Overview"
+            },
+            "name": "SummaryContentGroup",
+            "styleSettings": {
+              "margin": "0",
+              "padding": "0"
+            }
+          },
+          {
+            "type": 12,
+            "content": {
+              "version": "NotebookGroup/1.0",
+              "groupType": "template",
+              "loadFromTemplateId": "community-workbooks/UpdateCompliance/Quality updates",
+              "items": [],
+              "exportParameters": true
+            },
+            "conditionalVisibility": {
+              "parameterName": "currentWorkbook",
+              "comparison": "isEqualTo",
+              "value": "QualityUpdates"
+            },
+            "name": "QualityUpdatesContentGroup"
+          },
+          {
+            "type": 12,
+            "content": {
+              "version": "NotebookGroup/1.0",
+              "groupType": "template",
+              "loadFromTemplateId": "community-workbooks/UpdateCompliance/Feature updates",
+              "items": [],
+              "exportParameters": true
+            },
+            "conditionalVisibility": {
+              "parameterName": "currentWorkbook",
+              "comparison": "isEqualTo",
+              "value": "FeatureUpdates"
+            },
+            "name": "FeatureUpdatesContentGroup"
+          },
+          {
+            "type": 12,
+            "content": {
+              "version": "NotebookGroup/1.0",
+              "groupType": "template",
+              "loadFromTemplateId": "community-workbooks/UpdateCompliance/DeliveryOptimization",
+              "items": [],
+              "exportParameters": true
+            },
+            "conditionalVisibility": {
+              "parameterName": "currentWorkbook",
+              "comparison": "isEqualTo",
+              "value": "DeliveryOptimization"
+            },
+            "name": "group - 5"
+          },
+          {
+            "type": 12,
+            "content": {
+              "version": "NotebookGroup/1.0",
+              "groupType": "template",
+              "loadFromTemplateId": "community-workbooks/UpdateCompliance/Driver updates",
+              "items": []
+            },
+            "conditionalVisibility": {
+              "parameterName": "currentWorkbook",
+              "comparison": "isEqualTo",
+              "value": "DriverUpdates"
+            },
+            "name": "DriverUpdatesContentGroup"
+          }
+        ],
+        "exportParameters": true
+      },
+      "conditionalVisibilities": [
+        {
+          "parameterName": "mappedSubscription",
+          "comparison": "isNotEqualTo"
+        },
+        {
+          "parameterName": "mappedWorkspace",
+          "comparison": "isNotEqualTo"
+        },
+        {
+          "parameterName": "isOnboarded",
+          "comparison": "isEqualTo",
+          "value": "true"
+        }
+      ],
+      "name": "HubGroup"
+    }
+  ],
+  "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/workbook.json"
+}

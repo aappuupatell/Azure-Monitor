@@ -1,0 +1,1128 @@
+{
+  "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/workbook.json",
+  "version": "Notebook/1.0",
+  "isLocked": true,
+  "items": [
+    {
+      "type": 1,
+      "content": {
+        "json": "#### {TimeRange}"
+      },
+      "name": "text - timeRange1"
+    },
+    {
+      "type": 9,
+      "content": {
+        "version": "KqlParameterItem/1.0",
+        "parameters": [
+          {
+            "id": "be4e21dd-8dd8-4bff-8590-520f2587b765",
+            "version": "KqlParameterItem/1.0",
+            "name": "configFlag",
+            "type": 1,
+            "isGlobal": true,
+            "isHiddenWhenLocked": true,
+            "timeContext": {
+              "durationMs": 86400000
+            },
+            "value": "0"
+          }
+        ],
+        "style": "pills",
+        "queryType": 0,
+        "resourceType": "microsoft.insights/components"
+      },
+      "name": "parameters - 29"
+    },
+    {
+      "type": 9,
+      "content": {
+        "version": "KqlParameterItem/1.0",
+        "parameters": [
+          {
+            "id": "88f37708-533b-45ee-828f-5b6adff3d0c3",
+            "version": "KqlParameterItem/1.0",
+            "name": "showPerfConfig",
+            "type": 1,
+            "isRequired": true,
+            "isHiddenWhenLocked": true,
+            "criteriaData": [
+              {
+                "criteriaContext": {
+                  "leftOperand": "configFlag",
+                  "operator": "==",
+                  "rightValType": "static",
+                  "rightVal": "1",
+                  "resultValType": "static",
+                  "resultVal": "1"
+                }
+              },
+              {
+                "criteriaContext": {
+                  "operator": "Default",
+                  "resultValType": "static",
+                  "resultVal": "0"
+                }
+              }
+            ],
+            "timeContext": {
+              "durationMs": 86400000
+            }
+          }
+        ],
+        "style": "pills",
+        "queryType": 0,
+        "resourceType": "microsoft.insights/components"
+      },
+      "name": "parameters - 29"
+    },
+    {
+      "type": 11,
+      "content": {
+        "version": "LinkItem/1.0",
+        "style": "paragraph",
+        "links": [
+          {
+            "id": "f29b8ee7-50f7-4e6d-879a-ea30a7191a8d",
+            "cellValue": "configFlag",
+            "linkTarget": "parameter",
+            "linkLabel": "⚙️",
+            "subTarget": "1",
+            "preText": "Apdex Performance Configuration",
+            "style": "link"
+          }
+        ]
+      },
+      "conditionalVisibilities": [
+        {
+          "parameterName": "Whoused",
+          "comparison": "isNotEqualTo",
+          "value": "customEvents"
+        },
+        {
+          "parameterName": "showPerfConfig",
+          "comparison": "isEqualTo",
+          "value": "0"
+        }
+      ],
+      "name": "links - performanceConfig"
+    },
+    {
+      "type": 11,
+      "content": {
+        "version": "LinkItem/1.0",
+        "style": "paragraph",
+        "links": [
+          {
+            "id": "5743d62e-2e05-4449-8512-b13e19d000b9",
+            "cellValue": "configFlag",
+            "linkTarget": "parameter",
+            "linkLabel": "⚙️",
+            "subTarget": "0",
+            "preText": "Apdex Performance Configuration",
+            "style": "link"
+          }
+        ]
+      },
+      "conditionalVisibilities": [
+        {
+          "parameterName": "Whoused",
+          "comparison": "isNotEqualTo",
+          "value": "customEvents"
+        },
+        {
+          "parameterName": "showPerfConfig",
+          "comparison": "isEqualTo",
+          "value": "1"
+        }
+      ],
+      "name": "links - performanceConfig"
+    },
+    {
+      "type": 9,
+      "content": {
+        "version": "KqlParameterItem/1.0",
+        "parameters": [
+          {
+            "id": "eb80af48-58d4-4272-be44-46b79c7d541b",
+            "version": "KqlParameterItem/1.0",
+            "name": "performanceTable",
+            "type": 1,
+            "isRequired": true,
+            "isHiddenWhenLocked": true,
+            "criteriaData": [
+              {
+                "criteriaContext": {
+                  "leftOperand": "Whoused",
+                  "operator": "==",
+                  "rightValType": "static",
+                  "rightVal": "requests,pageViews",
+                  "resultValType": "static",
+                  "resultVal": "union requests, pageViews"
+                }
+              },
+              {
+                "criteriaContext": {
+                  "leftOperand": "Whoused",
+                  "operator": "==",
+                  "rightValType": "static",
+                  "rightVal": "pageViews,customEvents",
+                  "resultValType": "static",
+                  "resultVal": "union pageViews, customEvents"
+                }
+              },
+              {
+                "criteriaContext": {
+                  "leftOperand": "Whoused",
+                  "operator": "==",
+                  "rightValType": "static",
+                  "rightVal": "requests,customEvents",
+                  "resultValType": "static",
+                  "resultVal": "union requests,customEvents"
+                }
+              },
+              {
+                "criteriaContext": {
+                  "leftOperand": "Whoused",
+                  "operator": "==",
+                  "rightValType": "static",
+                  "rightVal": "pageViews",
+                  "resultValType": "static",
+                  "resultVal": "pageViews"
+                }
+              },
+              {
+                "criteriaContext": {
+                  "leftOperand": "Whoused",
+                  "operator": "==",
+                  "rightValType": "static",
+                  "rightVal": "requests",
+                  "resultValType": "static",
+                  "resultVal": "requests"
+                }
+              },
+              {
+                "criteriaContext": {
+                  "operator": "Default",
+                  "rightValType": "param",
+                  "resultValType": "static",
+                  "resultVal": "union pageViews,customEvents,requests"
+                }
+              }
+            ],
+            "timeContext": {
+              "durationMs": 86400000
+            },
+            "timeContextFromParameter": "TimeRange"
+          },
+          {
+            "id": "113dfb8f-1257-432c-aa74-84a3da0881d7",
+            "version": "KqlParameterItem/1.0",
+            "name": "queryAvgPerformance",
+            "type": 1,
+            "query": "{performanceTable}\r\n    | where timestamp >= ago(14d)\r\n {syntheticSourceFilter} | summarize SumOfDuration =  sum(duration), CountOfDuration = count()\r\n    | project AverageDuration = round(iff(CountOfDuration == 0, 0.0, 1.0 * SumOfDuration / CountOfDuration))",
+            "isHiddenWhenLocked": true,
+            "timeContext": {
+              "durationMs": 0
+            },
+            "timeContextFromParameter": "TimeRange",
+            "queryType": 0,
+            "resourceType": "microsoft.insights/components"
+          },
+          {
+            "id": "4ee0697d-ade0-43a8-89b9-93889c478326",
+            "version": "KqlParameterItem/1.0",
+            "name": "durationThreshold",
+            "label": "Threshold (seconds)",
+            "type": 1,
+            "description": "Apdex score is directly related to user's perception of responsiveness. By selecting a suitable threshold, you are defining the page view and request duration for which users are not impeded by application response time. ApdexScore <= 0.5 \"Unacceptable\", ApdexScore <= 0.7 \"Poor\", ApdexScore <= 0.85 \"Fair\", ApdexScore <= 0.94 \"Good\", ApdexScore > 0.94 \"Excellent\".",
+            "isRequired": true,
+            "typeSettings": {
+              "paramValidationRules": [
+                {
+                  "regExp": "^(600(\\.0+)?|([0-5]?\\d{1,2}(\\.\\d{1,3})?))$",
+                  "match": true,
+                  "message": "Please input valid threshold number. The number should less than 600 seconds."
+                }
+              ]
+            },
+            "criteriaData": [
+              {
+                "criteriaContext": {
+                  "leftOperand": "queryAvgPerformance",
+                  "operator": "is Empty",
+                  "rightValType": "param",
+                  "resultValType": "static",
+                  "resultVal": "0"
+                }
+              },
+              {
+                "criteriaContext": {
+                  "operator": "Default",
+                  "rightValType": "param",
+                  "resultValType": "expression",
+                  "resultVal": "{queryAvgPerformance}/1000"
+                }
+              }
+            ],
+            "timeContext": {
+              "durationMs": 0
+            },
+            "timeContextFromParameter": "TimeRange"
+          },
+          {
+            "id": "f7d847d9-cc5b-4f6e-b72f-8c3d3eb87078",
+            "version": "KqlParameterItem/1.0",
+            "name": "eventValues",
+            "type": 1,
+            "query": "datatable(Value:string)[{parseCohortEvents}]\r\n| where Value startswith\"{\\\"cohort\\\":\"\r\n| summarize cohorts = make_list(Value)\r\n| project cohorts= replace(@'\\[\"{', @'\"{', tostring(cohorts))\r\n| project cohorts=replace(@'}\"\\]', @'}\"', tostring(cohorts))\r\n| project cohorts=replace(@'\\[\\]', @'', tostring(cohorts))\r\n| project cohorts=iff(isnotempty('{userEventsQuery}') and isnotempty(cohorts), strcat(cohorts, ','), cohorts)\r\n| project events = strcat(cohorts, \"{userEventsQuery:escape}\")\r\n| project iff(isempty(events), '\"\"', events)",
+            "isHiddenWhenLocked": true,
+            "timeContext": {
+              "durationMs": 0
+            },
+            "timeContextFromParameter": "TimeRange",
+            "queryType": 0,
+            "resourceType": "microsoft.insights/components"
+          },
+          {
+            "id": "1a726f8e-a4a0-445e-9edf-20b58957eab4",
+            "version": "KqlParameterItem/1.0",
+            "name": "workbookParams",
+            "type": 1,
+            "isHiddenWhenLocked": true,
+            "criteriaData": [
+              {
+                "criteriaContext": {
+                  "leftOperand": "EnableFilter1",
+                  "operator": "==",
+                  "rightValType": "static",
+                  "rightVal": "0",
+                  "resultValType": "static",
+                  "resultVal": "{\"UsersList\":\"{UsersList:escape}\",\"Whoused\":\"{Whoused}\",\"UserEvent\":[{eventValues}], \"ByValue\": \"{ByValue:escapejson}\", \"UsageSplitBy\": \"{UsageSplitBy:escapejson}\",\"EnableFilter1\":\"{EnableFilter1}\", \"ApdexThresholdInMilliseconds\": \"{queryAvgPerformance}\"}"
+                }
+              },
+              {
+                "criteriaContext": {
+                  "operator": "Default",
+                  "rightValType": "param",
+                  "resultValType": "static",
+                  "resultVal": "{\"UsersList\":\"{UsersList:escape}\",\"Whoused\":\"{Whoused}\",\"UserEvent\":[{eventValues}], \"ByValue\": \"{ByValue:escapejson}\", \"UsageSplitBy\": \"{UsageSplitBy:escapejson}\",\"EnableFilter1\":\"{EnableFilter1}\",\"FilterDimension1\":\"{FilterDimension1}\",\"FilterOperator1\":\"{FilterOperator1}\",\"FilterValues1text\":\"{FilterValues1text}\",\"FilterDimension2\":\"{FilterDimension2}\", \"FilterOperator2\":\"{FilterOperator2}\", \"FilterValues2text\":\"{FilterValues2text}\", \"FilterDimension3\":\"{FilterDimension3}\", \"FilterOperator3\":\"{FilterOperator3}\", \"FilterValues3text\":\"{FilterValues3text}\", \"ApdexThresholdInMilliseconds\": \"{queryAvgPerformance}\"}"
+                }
+              }
+            ],
+            "timeContextFromParameter": "TimeRange"
+          }
+        ],
+        "style": "pills",
+        "queryType": 0,
+        "resourceType": "microsoft.insights/components"
+      },
+      "conditionalVisibilities": [
+        {
+          "parameterName": "Whoused",
+          "comparison": "isNotEqualTo",
+          "value": "customEvents"
+        },
+        {
+          "parameterName": "configFlag",
+          "comparison": "isEqualTo",
+          "value": "1"
+        }
+      ],
+      "name": "parameters - durationThreshold"
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "let usg_events = dynamic([{userEventsList}]); let threshold = {durationThreshold}*1000; // Apdex threschold in milliseconds\r\nlet mainTable = union {Whoused}\r\n  | where timestamp {TimeRange}\r\n {syntheticSourceFilter}\r\n | extend name =replace(\"\\n\", \"\",name)\r\n | where '*' in (usg_events) or name in (usg_events)\r\n  {filters};\r\nlet resultTable = {mainTableQuery};\r\nlet performanceResult = {performanceTable}\r\n    | where timestamp {TimeRange}\r\n   | extend name =replace(\"\\n\", \"\",name)\r\n | where '*' in (usg_events) or name in (usg_events)\r\n    {filters}\r\n    | where isnotnull(duration)\r\n    | summarize AverageDuration = avg(duration) by {usersType}\r\n    | extend UserExperience = case(AverageDuration <= threshold, 'S', AverageDuration <= 4 * threshold, 'T', 'F')\r\n      | summarize Satisfied = countif(UserExperience == 'S'), Tolerating = countif(UserExperience == 'T'), Frustrated = countif(UserExperience == 'F'), Total = count()\r\n        | extend ApdexScore = (Satisfied + (Tolerating / 2.0)) / Total\r\n        | extend PERFORMANCE = case(\r\n    ApdexScore <= 0.5, \"Unacceptable\",\r\n    ApdexScore <= 0.7, \"Poor\",\r\n    ApdexScore <= 0.85, \"Fair\",\r\n    ApdexScore <= 0.94, \"Good\",\r\n    \"Excellent\")\r\n | project PERFORMANCE, id =1;\r\nresultTable \r\n    | summarize SESSIONS = dcount(session_Id), EVENTS = count(), id= 1\r\n    | join performanceResult on id\r\n      | project SESSIONS, EVENTS, PERFORMANCE\r\n    | evaluate narrow()\r\n    | project Column, Value, id = case(Column =='SESSIONS', 'community-Workbooks/UsageMetrics/Usage - Sessions', Column =='EVENTS', 'community-Workbooks/UsageMetrics/Usage - Events','Community-Workbooks/Performance/Apdex'), UsageSourceType = case(Column =='SESSIONS', '5', Column =='EVENTS', '6','3'), Title = case(Column =='SESSIONS', 'Sessions', Column =='EVENTS', 'Events','Apdex')\r\n    | where '{Whoused}' != \"customEvents\" or Column != \"PERFORMANCE\"",
+        "size": 3,
+        "queryType": 0,
+        "resourceType": "microsoft.insights/components",
+        "visualization": "tiles",
+        "tileSettings": {
+          "titleContent": {
+            "columnMatch": "Column",
+            "formatter": 1,
+            "formatOptions": {
+              "linkTarget": "OpenBlade",
+              "workbookContext": null,
+              "bladeOpenContext": {
+                "bladeName": "UsageWorkbookViewerBlade",
+                "extensionName": "AppInsightsExtension",
+                "bladeParameters": [
+                  {
+                    "name": "ComponentId",
+                    "source": "parameter",
+                    "value": "componentId"
+                  },
+                  {
+                    "name": "TimeRange",
+                    "source": "parameter",
+                    "value": "TimeRange"
+                  },
+                  {
+                    "name": "ConfigurationId",
+                    "source": "column",
+                    "value": "id"
+                  },
+                  {
+                    "name": "UsageSourceType",
+                    "source": "column",
+                    "value": "UsageSourceType"
+                  },
+                  {
+                    "name": "WorkbookTemplateName",
+                    "source": "column",
+                    "value": "Title"
+                  },
+                  {
+                    "name": "NotebookParams",
+                    "source": "parameter",
+                    "value": "workbookParams"
+                  }
+                ]
+              }
+            }
+          },
+          "leftContent": {
+            "columnMatch": "Value",
+            "formatter": 12,
+            "numberFormat": {
+              "unit": 17,
+              "options": {
+                "style": "decimal",
+                "useGrouping": false,
+                "maximumFractionDigits": 2,
+                "maximumSignificantDigits": 3
+              }
+            }
+          },
+          "showBorder": true,
+          "size": "auto"
+        }
+      },
+      "name": "query - tiles1"
+    },
+    {
+      "type": 1,
+      "content": {
+        "json": "#### Last month\r\n"
+      },
+      "conditionalVisibility": {
+        "parameterName": "isGreaterOrEqual30days",
+        "comparison": "isEqualTo",
+        "value": "true"
+      },
+      "name": "text - timeRange2"
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "let usg_events = dynamic([{userEventsList}]); let now = now();\r\n    let previousMonthTimestamp = now - 56d;\r\n    let monthTimestamp = now - 28d;\r\n    let mainTable = union pageViews,customEvents\r\n    | where timestamp >= previousMonthTimestamp\r\n  {syntheticSourceFilter}\r\n | extend name =replace(\"\\n\", \"\",name)\r\n | where '*' in (usg_events) or name in (usg_events)\r\n    {filters};\r\nlet queryTable = {mainTableQuery}; \r\nlet cohortedTable = queryTable\r\n    | extend timestamp = timestamp  - 420m;\r\nlet thisMonth = toscalar(cohortedTable\r\n    | where timestamp >= monthTimestamp\r\n    | summarize hll = hll({usersType}));\r\nlet lastMonth = toscalar(cohortedTable\r\n    | where timestamp < monthTimestamp and timestamp >= previousMonthTimestamp\r\n    | summarize hll = hll({usersType}));\r\nrange i from 1 to 1 step 1\r\n    | extend ThisMonth = thisMonth, LastMonth = lastMonth\r\n    | evaluate dcount_intersect(LastMonth, ThisMonth)\r\n    | project Mau = dcount_hll(ThisMonth), MauLastMonth = s0, ReturningUsers = s1\r\n    | extend NewUsers = Mau - ReturningUsers, LostUsers = MauLastMonth - ReturningUsers, GrowthRate = round(100.0 * (Mau - MauLastMonth) / MauLastMonth), RetentionRate = round(100.0 * ReturningUsers / MauLastMonth)\r\n    | project MAU = Mau, RETENTION = iff(MauLastMonth ==0, '--', strcat(tolong(RetentionRate),'%')), GROWTH = iff(MauLastMonth ==0, '--', strcat(tolong(GrowthRate),'%'))\r\n    | evaluate narrow()\r\n    | project Column, Value, id = case(Column =='MAU', 'Community-Workbooks/Usage/Active Users', Column =='RETENTION', 'Community-Workbooks/Retention/Retention - N Period','Community-Workbooks/Usage/New, Returning and Churned Users')\r\n    | where Value != '--'\r\n\r\n \r\n",
+        "size": 3,
+        "queryType": 0,
+        "resourceType": "microsoft.insights/components",
+        "visualization": "tiles",
+        "tileSettings": {
+          "titleContent": {
+            "columnMatch": "Column",
+            "formatter": 1,
+            "formatOptions": {
+              "linkColumn": "id",
+              "linkTarget": "WorkbookTemplate",
+              "showIcon": true,
+              "workbookContext": null
+            }
+          },
+          "leftContent": {
+            "columnMatch": "Value",
+            "formatter": 1,
+            "formatOptions": {
+              "showIcon": true
+            },
+            "numberFormat": {
+              "unit": 0,
+              "options": {
+                "style": "decimal",
+                "useGrouping": false,
+                "maximumFractionDigits": 2
+              }
+            }
+          },
+          "showBorder": true
+        }
+      },
+      "conditionalVisibility": {
+        "parameterName": "isGreaterOrEqual30days",
+        "comparison": "isEqualTo",
+        "value": "true"
+      },
+      "name": "query - tiles2"
+    },
+    {
+      "type": 9,
+      "content": {
+        "version": "KqlParameterItem/1.0",
+        "parameters": [
+          {
+            "id": "732d8494-7a52-426a-a963-27977fe443d0",
+            "version": "KqlParameterItem/1.0",
+            "name": "Properties",
+            "label": "PROPERTIES",
+            "type": 2,
+            "description": "Please select a maximum of 6 items.",
+            "multiSelect": true,
+            "quote": "'",
+            "delimiter": ",",
+            "query": "let customDimension = datatable(value:string, label:string, group: string){formattedCustomDimensions}\r\n| extend value = replace(@\"/:/\", @\"'\", value), label = replace(@\"/:/\", @\"'\", label);\r\nlet dimensionList = datatable(value:string, label:string, group: string){usageStandardDimension}\r\n| extend value = replace(@\"/:/\", @\"'\", value), label = replace(@\"/:/\", @\"'\", label)\r\n | order by label asc;\r\nunion dimensionList, customDimension\r\n   | extend value= replace(@'\\\\\"', @'/:/', tostring(value))\r\n   | project value = strcat('{\"value\": \"',replace(@'\"',@'\\\\\\\\\"', value),'\",',' \"label\": \"',replace(@'\"',@'\\\\\\\\\"', label),'\"}'), label, group\r\n\r\n",
+            "typeSettings": {
+              "limitSelectTo": 6,
+              "additionalResourceOptions": [
+                "value::3"
+              ],
+              "showDefault": false
+            },
+            "timeContext": {
+              "durationMs": 0
+            },
+            "timeContextFromParameter": "TimeRange",
+            "defaultValue": "value::3",
+            "queryType": 0,
+            "resourceType": "microsoft.insights/components",
+            "value": [
+              "{\"value\": \"client_CountryOrRegion\", \"label\": \"Country or region\"}",
+              "{\"value\": \"client_OS\", \"label\": \"Operating system\"}",
+              "{\"value\": \"client_Browser\", \"label\": \"Browser version\"}"
+            ]
+          }
+        ],
+        "style": "above",
+        "doNotRunWhenHidden": true,
+        "queryType": 0,
+        "resourceType": "microsoft.insights/components"
+      },
+      "name": "parameters - 15"
+    },
+    {
+      "type": 9,
+      "content": {
+        "version": "KqlParameterItem/1.0",
+        "parameters": [
+          {
+            "id": "276061c1-8556-47e1-9fe8-49e1b5f30427",
+            "version": "KqlParameterItem/1.0",
+            "name": "columnNameQuery",
+            "type": 1,
+            "isHiddenWhenLocked": true,
+            "criteriaData": [
+              {
+                "criteriaContext": {
+                  "leftOperand": "Properties",
+                  "operator": "is Empty",
+                  "rightValType": "param",
+                  "resultValType": "static",
+                  "resultVal": "print ''"
+                }
+              },
+              {
+                "criteriaContext": {
+                  "operator": "Default",
+                  "rightValType": "param",
+                  "resultValType": "static",
+                  "resultVal": "datatable(Value:string)[{Properties}] | project name = parse_json(Value).value | summarize name = tostring(make_list(name))  | project name= substring(name, 1, strlen(name)-2) | project name=  replace(@'/:/', @'\\\\\\\\\"', name) | project name=  replace(@\"'\", @\"\\\\'\", name)"
+                }
+              }
+            ],
+            "timeContext": {
+              "durationMs": 0
+            },
+            "timeContextFromParameter": "TimeRange",
+            "resourceType": "microsoft.insights/components"
+          },
+          {
+            "id": "412bb2fa-3a6a-4301-817f-c814a962be9b",
+            "version": "KqlParameterItem/1.0",
+            "name": "columnLabelQuery",
+            "type": 1,
+            "isHiddenWhenLocked": true,
+            "criteriaData": [
+              {
+                "criteriaContext": {
+                  "leftOperand": "Properties",
+                  "operator": "is Empty",
+                  "rightValType": "param",
+                  "resultValType": "static",
+                  "resultVal": "print ''"
+                }
+              },
+              {
+                "criteriaContext": {
+                  "operator": "Default",
+                  "rightValType": "param",
+                  "resultValType": "static",
+                  "resultVal": "datatable(Value:string)[{Properties}] | project label = parse_json(Value).label | summarize label = make_list(label) | project label= substring(label, 1, strlen(label)-2) | project label = replace(@\"'\", @\"\\\\'\", label)"
+                }
+              }
+            ],
+            "timeContext": {
+              "durationMs": 0
+            },
+            "timeContextFromParameter": "TimeRange",
+            "resourceType": "microsoft.insights/components"
+          },
+          {
+            "id": "bce9a188-8ca9-4dbd-8932-e8bd8de1275c",
+            "version": "KqlParameterItem/1.0",
+            "name": "selectedProperties",
+            "type": 1,
+            "query": "{columnNameQuery}",
+            "isHiddenWhenLocked": true,
+            "timeContext": {
+              "durationMs": 0
+            },
+            "timeContextFromParameter": "TimeRange",
+            "queryType": 0,
+            "resourceType": "microsoft.insights/components"
+          },
+          {
+            "id": "33aa8135-eecc-43d0-ab23-53c73d1e817d",
+            "version": "KqlParameterItem/1.0",
+            "name": "labelOfSelectedProperties",
+            "type": 1,
+            "query": "{columnLabelQuery}",
+            "isHiddenWhenLocked": true,
+            "timeContext": {
+              "durationMs": 0
+            },
+            "timeContextFromParameter": "TimeRange",
+            "queryType": 0,
+            "resourceType": "microsoft.insights/components"
+          },
+          {
+            "id": "737850dd-0480-45d4-81b6-23922fb596d6",
+            "version": "KqlParameterItem/1.0",
+            "name": "propertyColumn1",
+            "type": 1,
+            "description": "Column name for first property grid",
+            "isRequired": true,
+            "query": "let value = split('{selectedProperties}', ',')[0];\r\nprint iff(isempty(value), '<unset>', trim('\"', tostring(value)))",
+            "value": "client_CountryOrRegion",
+            "isHiddenWhenLocked": true,
+            "timeContext": {
+              "durationMs": 0
+            },
+            "timeContextFromParameter": "TimeRange",
+            "queryType": 0,
+            "resourceType": "microsoft.insights/components"
+          },
+          {
+            "id": "da94f8c8-21d9-4626-94ab-4676e1fb1561",
+            "version": "KqlParameterItem/1.0",
+            "name": "propertyColumn2",
+            "type": 1,
+            "description": "Column name for second property grid",
+            "isRequired": true,
+            "query": "let value = split('{selectedProperties}', ',')[1];\r\nprint iff(isempty(value), '<unset>', trim('\"', tostring(value)))",
+            "value": "client_OS",
+            "isHiddenWhenLocked": true,
+            "timeContext": {
+              "durationMs": 0
+            },
+            "timeContextFromParameter": "TimeRange",
+            "queryType": 0,
+            "resourceType": "microsoft.insights/components"
+          },
+          {
+            "id": "2769f12c-16c9-43b2-8262-5bcf88fbc309",
+            "version": "KqlParameterItem/1.0",
+            "name": "propertyColumn3",
+            "type": 1,
+            "description": "Column name for third property grid",
+            "isRequired": true,
+            "query": "let value = split('{selectedProperties}', ',')[2];\r\nprint iff(isempty(value), '<unset>', trim('\"', tostring(value)))",
+            "value": "client_Browser",
+            "isHiddenWhenLocked": true,
+            "timeContext": {
+              "durationMs": 0
+            },
+            "timeContextFromParameter": "TimeRange",
+            "queryType": 0,
+            "resourceType": "microsoft.insights/components"
+          },
+          {
+            "id": "30cc6cfa-dd0e-482d-8124-e752ac406141",
+            "version": "KqlParameterItem/1.0",
+            "name": "propertyColumn4",
+            "type": 1,
+            "description": "Column name for four property grid",
+            "isRequired": true,
+            "query": "let value = split('{selectedProperties}', ',')[3];\r\nprint iff(isempty(value), '<unset>', trim('\"', tostring(value)))",
+            "value": "<unset>",
+            "isHiddenWhenLocked": true,
+            "timeContext": {
+              "durationMs": 0
+            },
+            "timeContextFromParameter": "TimeRange",
+            "queryType": 0,
+            "resourceType": "microsoft.insights/components"
+          },
+          {
+            "id": "900a04cf-59bd-48f0-ba3e-82b1e8688907",
+            "version": "KqlParameterItem/1.0",
+            "name": "propertyColumn5",
+            "type": 1,
+            "description": "Column name for fifth property grid",
+            "isRequired": true,
+            "query": "let value = split('{selectedProperties}', ',')[4];\r\nprint iff(isempty(value), '<unset>', trim('\"', tostring(value)))",
+            "value": "<unset>",
+            "isHiddenWhenLocked": true,
+            "timeContext": {
+              "durationMs": 0
+            },
+            "timeContextFromParameter": "TimeRange",
+            "queryType": 0,
+            "resourceType": "microsoft.insights/components"
+          },
+          {
+            "id": "391fb4a3-340b-4a78-a311-b400cb967115",
+            "version": "KqlParameterItem/1.0",
+            "name": "propertyColumn6",
+            "type": 1,
+            "description": "Column name for sixth property grid",
+            "isRequired": true,
+            "query": "let value = split('{selectedProperties}', ',')[5];\r\nprint iff(isempty(value), '<unset>', trim('\"', tostring(value)))",
+            "value": "<unset>",
+            "isHiddenWhenLocked": true,
+            "timeContext": {
+              "durationMs": 0
+            },
+            "timeContextFromParameter": "TimeRange",
+            "queryType": 0,
+            "resourceType": "microsoft.insights/components"
+          },
+          {
+            "id": "407dabfe-31be-4cc4-84ae-8f1db8fa18a5",
+            "version": "KqlParameterItem/1.0",
+            "name": "column1Name",
+            "type": 1,
+            "description": "Column name for first property grid",
+            "query": "let label = split('{labelOfSelectedProperties}', ',')[0];\r\nprint iff(isempty(label), '<unset>',  trim('\"', tostring(label)))",
+            "isHiddenWhenLocked": true,
+            "timeContext": {
+              "durationMs": 0
+            },
+            "timeContextFromParameter": "TimeRange",
+            "queryType": 0,
+            "resourceType": "microsoft.insights/components"
+          },
+          {
+            "id": "b1a720e5-688e-4141-a82f-6c813cb9baeb",
+            "version": "KqlParameterItem/1.0",
+            "name": "column2Name",
+            "type": 1,
+            "description": " Column name for second property grid",
+            "query": "let label = split('{labelOfSelectedProperties}', ',')[1];\r\nprint iff(isempty(label), '<unset>',  trim('\"', tostring(label)))",
+            "isHiddenWhenLocked": true,
+            "timeContext": {
+              "durationMs": 0
+            },
+            "timeContextFromParameter": "TimeRange",
+            "queryType": 0,
+            "resourceType": "microsoft.insights/components"
+          },
+          {
+            "id": "a0b639b2-e49f-4953-8fa3-16e7381792b7",
+            "version": "KqlParameterItem/1.0",
+            "name": "column3Name",
+            "type": 1,
+            "description": "Column name for third property grid",
+            "query": "let label = split('{labelOfSelectedProperties}', ',')[2];\r\nprint iff(isempty(label), '<unset>',  trim('\"', tostring(label)))",
+            "isHiddenWhenLocked": true,
+            "timeContext": {
+              "durationMs": 0
+            },
+            "timeContextFromParameter": "TimeRange",
+            "queryType": 0,
+            "resourceType": "microsoft.insights/components"
+          },
+          {
+            "id": "7c5ea397-c2bd-446d-8799-2f5377962cca",
+            "version": "KqlParameterItem/1.0",
+            "name": "column4Name",
+            "type": 1,
+            "description": "Column name for fourth property grid",
+            "query": "let label = split('{labelOfSelectedProperties}', ',')[3];\r\nprint iff(isempty(label), '<unset>',  trim('\"', tostring(label)))",
+            "isHiddenWhenLocked": true,
+            "timeContext": {
+              "durationMs": 0
+            },
+            "timeContextFromParameter": "TimeRange",
+            "queryType": 0,
+            "resourceType": "microsoft.insights/components"
+          },
+          {
+            "id": "9e8c075d-090b-4d36-898a-01e4ec91560f",
+            "version": "KqlParameterItem/1.0",
+            "name": "column5Name",
+            "type": 1,
+            "description": "Column name for fifth property grid",
+            "query": "let label = split('{labelOfSelectedProperties}', ',')[4];\r\nprint iff(isempty(label), '<unset>',  trim('\"', tostring(label)))",
+            "isHiddenWhenLocked": true,
+            "timeContext": {
+              "durationMs": 0
+            },
+            "timeContextFromParameter": "TimeRange",
+            "queryType": 0,
+            "resourceType": "microsoft.insights/components"
+          },
+          {
+            "id": "15c86faa-dab0-4d51-aec8-e867b2f90bc6",
+            "version": "KqlParameterItem/1.0",
+            "name": "column6Name",
+            "type": 1,
+            "description": "Column name for sixth property grid",
+            "query": "let label = split('{labelOfSelectedProperties}', ',')[5];\r\nprint iff(isempty(label), '<unset>',  trim('\"', tostring(label)))",
+            "isHiddenWhenLocked": true,
+            "timeContext": {
+              "durationMs": 0
+            },
+            "timeContextFromParameter": "TimeRange",
+            "queryType": 0,
+            "resourceType": "microsoft.insights/components"
+          }
+        ],
+        "style": "above",
+        "doNotRunWhenHidden": true,
+        "queryType": 0,
+        "resourceType": "microsoft.insights/components"
+      },
+      "name": "parameters - 11"
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "let usg_events = dynamic([{userEventsList}]);let mainTable = union {Whoused}\r\n | where timestamp {TimeRange}\r\n {syntheticSourceFilter}\r\n | extend name =replace(\"\\n\", \"\",name)\r\n | where '*' in (usg_events) or name in (usg_events)\r\n {filters};\r\nlet queryTable = {mainTableQuery};\r\nlet cohortedTable = queryTable\r\n        | extend  dimension =tostring({propertyColumn1})\r\n        | extend dimension = iif(isempty(dimension) , \"<undefined>\", dimension)\r\n        | summarize hll = hll({usersType}) by tostring(dimension)\r\n        | extend Users = dcount_hll(hll)\r\n        | order by Users desc\r\n        | serialize rank = row_number()\r\n        | extend dimension = iff(rank > 5, 'Other', dimension)\r\n        | summarize merged = hll_merge(hll) by tostring(dimension)\r\n        | project [\"{column1Name:escape}\"] = dimension, Counts = dcount_hll(merged);\r\ncohortedTable",
+        "size": 3,
+        "showAnalytics": true,
+        "queryType": 0,
+        "resourceType": "microsoft.insights/components",
+        "visualization": "table",
+        "gridSettings": {
+          "formatters": [
+            {
+              "columnMatch": "Counts",
+              "formatter": 4,
+              "formatOptions": {
+                "min": 0,
+                "palette": "turquoise"
+              },
+              "numberFormat": {
+                "unit": 17,
+                "options": {
+                  "style": "decimal",
+                  "maximumFractionDigits": 2
+                }
+              }
+            }
+          ]
+        }
+      },
+      "customWidth": "33",
+      "conditionalVisibility": {
+        "parameterName": "propertyColumn1",
+        "comparison": "isNotEqualTo",
+        "value": "<unset>"
+      },
+      "name": "query -  propertygrid1"
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "let usg_events = dynamic([{userEventsList}]);let mainTable = union {Whoused}\r\n | where timestamp {TimeRange}\r\n {syntheticSourceFilter}\r\n | extend name =replace(\"\\n\", \"\",name)\r\n | where '*' in (usg_events) or name in (usg_events)\r\n {filters};\r\nlet queryTable = {mainTableQuery};\r\nlet cohortedTable = queryTable\r\n        | extend  dimension = tostring({propertyColumn2})\r\n        | extend dimension = iif(isempty(dimension) , \"<undefined>\", dimension)\r\n        | summarize hll = hll({usersType}) by tostring(dimension)\r\n        | extend Users = dcount_hll(hll)\r\n        | order by Users desc\r\n        | serialize rank = row_number()\r\n        | extend dimension = iff(rank > 5, 'Other', dimension)\r\n        | summarize merged = hll_merge(hll) by tostring(dimension)\r\n        | project [\"{column2Name:escape}\"] = dimension, Counts = dcount_hll(merged);\r\ncohortedTable",
+        "size": 3,
+        "showAnalytics": true,
+        "queryType": 0,
+        "resourceType": "microsoft.insights/components",
+        "visualization": "table",
+        "gridSettings": {
+          "formatters": [
+            {
+              "columnMatch": "Counts",
+              "formatter": 4,
+              "formatOptions": {
+                "min": 0,
+                "palette": "turquoise"
+              },
+              "numberFormat": {
+                "unit": 17,
+                "options": {
+                  "style": "decimal",
+                  "maximumFractionDigits": 2
+                }
+              }
+            }
+          ]
+        }
+      },
+      "customWidth": "33",
+      "conditionalVisibility": {
+        "parameterName": "propertyColumn2",
+        "comparison": "isNotEqualTo",
+        "value": "<unset>"
+      },
+      "name": "query -  propertygrid2"
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "let usg_events = dynamic([{userEventsList}]);let mainTable = union {Whoused}\r\n | where timestamp {TimeRange}\r\n {syntheticSourceFilter}\r\n | extend name =replace(\"\\n\", \"\",name)\r\n | where '*' in (usg_events) or name in (usg_events)\r\n {filters};\r\nlet queryTable = {mainTableQuery};\r\nlet cohortedTable = queryTable \r\n        | extend dimension = tostring({propertyColumn3})\r\n        | extend dimension = iif(isempty(dimension), \"<undefined>\", dimension)\r\n        | summarize hll = hll({usersType}) by tostring(dimension)\r\n        | extend Browser = dcount_hll(hll)\r\n        | order by Browser desc\r\n        | serialize rank = row_number()\r\n        | extend dimension = iff(rank > 5, 'Other', dimension)\r\n        | summarize merged = hll_merge(hll) by tostring(dimension)\r\n        | project [\"{column3Name:escape}\"]  = dimension, Counts = dcount_hll(merged);\r\ncohortedTable",
+        "size": 3,
+        "showAnalytics": true,
+        "queryType": 0,
+        "resourceType": "microsoft.insights/components",
+        "visualization": "table",
+        "gridSettings": {
+          "formatters": [
+            {
+              "columnMatch": "Counts",
+              "formatter": 4,
+              "formatOptions": {
+                "min": 0,
+                "palette": "turquoise"
+              },
+              "numberFormat": {
+                "unit": 17,
+                "options": {
+                  "style": "decimal",
+                  "useGrouping": false,
+                  "maximumFractionDigits": 2
+                }
+              }
+            }
+          ]
+        }
+      },
+      "customWidth": "33",
+      "conditionalVisibility": {
+        "parameterName": "propertyColumn3",
+        "comparison": "isNotEqualTo",
+        "value": "<unset>"
+      },
+      "name": "query -  propertygrid3"
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "let usg_events = dynamic([{userEventsList}]);let mainTable = union {Whoused}\r\n | where timestamp {TimeRange}\r\n {syntheticSourceFilter}\r\n | extend name =replace(\"\\n\", \"\",name)\r\n | where '*' in (usg_events) or name in (usg_events)\r\n {filters};\r\nlet queryTable = {mainTableQuery};\r\nlet cohortedTable = queryTable \r\n        | extend dimension = tostring({propertyColumn4})\r\n        | extend dimension = iif(isempty(dimension), \"<undefined>\", dimension)\r\n        | summarize hll = hll({usersType}) by tostring(dimension)\r\n        | extend Browser = dcount_hll(hll)\r\n        | order by Browser desc\r\n        | serialize rank = row_number()\r\n        | extend dimension = iff(rank > 5, 'Other', dimension)\r\n        | summarize merged = hll_merge(hll) by tostring(dimension)\r\n        | project [\"{column4Name:escape}\"] = dimension, Counts = dcount_hll(merged);\r\ncohortedTable",
+        "size": 3,
+        "showAnalytics": true,
+        "queryType": 0,
+        "resourceType": "microsoft.insights/components",
+        "visualization": "table",
+        "gridSettings": {
+          "formatters": [
+            {
+              "columnMatch": "Counts",
+              "formatter": 4,
+              "formatOptions": {
+                "min": 0,
+                "palette": "turquoise"
+              },
+              "numberFormat": {
+                "unit": 17,
+                "options": {
+                  "style": "decimal",
+                  "useGrouping": false,
+                  "maximumFractionDigits": 2
+                }
+              }
+            }
+          ]
+        }
+      },
+      "customWidth": "33",
+      "conditionalVisibility": {
+        "parameterName": "propertyColumn4",
+        "comparison": "isNotEqualTo",
+        "value": "<unset>"
+      },
+      "name": "query -  propertygrid4"
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "let usg_events = dynamic([{userEventsList}]);let mainTable = union {Whoused}\r\n | where timestamp {TimeRange}\r\n {syntheticSourceFilter}\r\n | extend name =replace(\"\\n\", \"\",name)\r\n | where '*' in (usg_events) or name in (usg_events)\r\n {filters};\r\nlet queryTable = {mainTableQuery};\r\nlet cohortedTable = queryTable \r\n        | extend dimension = tostring({propertyColumn5})\r\n        | extend dimension = iif(isempty(dimension), \"<undefined>\", dimension)\r\n        | summarize hll = hll({usersType}) by tostring(dimension)\r\n        | extend Browser = dcount_hll(hll)\r\n        | order by Browser desc\r\n        | serialize rank = row_number()\r\n        | extend dimension = iff(rank > 5, 'Other', dimension)\r\n        | summarize merged = hll_merge(hll) by dimension\r\n        | project [\"{column5Name:escape}\"]  = dimension, Counts = dcount_hll(merged);\r\ncohortedTable",
+        "size": 3,
+        "showAnalytics": true,
+        "queryType": 0,
+        "resourceType": "microsoft.insights/components",
+        "visualization": "table",
+        "gridSettings": {
+          "formatters": [
+            {
+              "columnMatch": "Counts",
+              "formatter": 4,
+              "formatOptions": {
+                "min": 0,
+                "palette": "turquoise"
+              },
+              "numberFormat": {
+                "unit": 17,
+                "options": {
+                  "style": "decimal",
+                  "useGrouping": false,
+                  "maximumFractionDigits": 2
+                }
+              }
+            }
+          ]
+        }
+      },
+      "customWidth": "33",
+      "conditionalVisibility": {
+        "parameterName": "propertyColumn5",
+        "comparison": "isNotEqualTo",
+        "value": "<unset>"
+      },
+      "name": "query -  propertygrid5"
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "let usg_events = dynamic([{userEventsList}]);let mainTable = union {Whoused}\r\n | where timestamp {TimeRange}\r\n {syntheticSourceFilter}\r\n | extend name =replace(\"\\n\", \"\",name)\r\n | where '*' in (usg_events) or name in (usg_events)\r\n {filters};\r\nlet queryTable = {mainTableQuery};\r\nlet cohortedTable = queryTable \r\n        | extend dimension = tostring({propertyColumn6})\r\n        | extend dimension = iif(isempty(dimension), \"<undefined>\", dimension)\r\n        | summarize hll = hll({usersType}) by tostring(dimension)\r\n        | extend Browser = dcount_hll(hll)\r\n        | order by Browser desc\r\n        | serialize rank = row_number()\r\n        | extend dimension = iff(rank > 5, 'Other', dimension)\r\n        | summarize merged = hll_merge(hll) by tostring(dimension)\r\n        | project [\"{column6Name:escape}\"]  = dimension, Counts = dcount_hll(merged);\r\ncohortedTable",
+        "size": 3,
+        "showAnalytics": true,
+        "queryType": 0,
+        "resourceType": "microsoft.insights/components",
+        "visualization": "table",
+        "gridSettings": {
+          "formatters": [
+            {
+              "columnMatch": "Counts",
+              "formatter": 4,
+              "formatOptions": {
+                "min": 0,
+                "palette": "turquoise"
+              },
+              "numberFormat": {
+                "unit": 17,
+                "options": {
+                  "style": "decimal",
+                  "useGrouping": false,
+                  "maximumFractionDigits": 2
+                }
+              }
+            }
+          ]
+        }
+      },
+      "customWidth": "33",
+      "conditionalVisibility": {
+        "parameterName": "propertyColumn6",
+        "comparison": "isNotEqualTo",
+        "value": "<unset>"
+      },
+      "name": "query -  propertygrid6"
+    },
+    {
+      "type": 1,
+      "content": {
+        "json": "#### MEET YOUR USERS"
+      },
+      "name": "text - 12",
+      "styleSettings": {
+        "margin": "20px 0 0 0"
+      }
+    },
+    {
+      "type": 9,
+      "content": {
+        "version": "KqlParameterItem/1.0",
+        "parameters": [
+          {
+            "id": "d80fe630-0e3e-49db-b586-0df42bd7b919",
+            "version": "KqlParameterItem/1.0",
+            "name": "SelectUsers",
+            "label": "Select Users",
+            "type": 2,
+            "isRequired": true,
+            "query": "datatable(value:string, text:string)[\r\n'| sample 5', 'Show Any 5 Users', \r\n'| top 5 by count_', 'Show Most Active Users'\r\n]",
+            "value": "| sample 5",
+            "typeSettings": {
+              "additionalResourceOptions": []
+            },
+            "queryType": 0,
+            "resourceType": "microsoft.insights/components"
+          }
+        ],
+        "style": "above",
+        "doNotRunWhenHidden": true,
+        "queryType": 0,
+        "resourceType": "microsoft.insights/components"
+      },
+      "name": "parameters - selectUsersDropdown"
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "let usg_events = dynamic([{userEventsList}]);let mainTable = union {Whoused}\r\n | where timestamp {TimeRange}\r\n {syntheticSourceFilter}\r\n | extend name =replace(\"\\n\", \"\",name)\r\n | where '*' in (usg_events) or name in (usg_events)\r\n {filters};\r\nlet queryTable = {mainTableQuery}; \r\nlet cohortedTable = queryTable\r\n            | where isnotempty({usersType})\r\n            | summarize count() by {usersType}\r\n            {SelectUsers}\r\n            | summarize  makelist({usersType});\r\nmainTable\r\n    | where {usersType} in (cohortedTable)\r\n    | summarize sessionCount = dcount(session_Id),\r\n        eventCount = count(),\r\n        OS = make_set_if(client_OS, isnotempty(client_OS)), \r\n        Browsers = make_set_if(client_Browser, isnotempty(client_Browser)),\r\n        any(client_City, client_CountryOrRegion)\r\n        by {usersType}            \r\n        | project Users = {usersType}, Cities = iff(isempty(any_client_City), \"Unknown\", any_client_City), Countries = iff(isempty(any_client_CountryOrRegion), \"Unknown\", any_client_CountryOrRegion), Sessions = sessionCount, Events = eventCount, OS=replace('\",\"',', ',trim_end('\"]',substring(OS, 2))), Browsers = replace('\",\"',', ',trim_end('\"]',substring(Browsers, 2)))\r\n        | project Users, Location = strcat(Cities, \", \", Countries), Events, NumberLabel = 'events', OS=iff(OS =='', \"Unknown\", iff(strlen(OS) > 40, strcat(substring(OS, 0, 38), '...'), OS)), Browsers = iff(Browsers =='', \"Unknown\", Browsers)\r\n        | order by Events ",
+        "size": 3,
+        "queryType": 0,
+        "resourceType": "microsoft.insights/components",
+        "visualization": "tiles",
+        "tileSettings": {
+          "titleContent": {
+            "columnMatch": "Users",
+            "formatter": 7,
+            "formatOptions": {
+              "linkColumn": "Users",
+              "linkTarget": "UserTimeline",
+              "linkLabel": "View user timeline",
+              "linkIsContextBlade": true
+            }
+          },
+          "subtitleContent": {
+            "columnMatch": "Location",
+            "formatter": 1,
+            "tooltipFormat": {
+              "tooltip": "Location: {0}"
+            }
+          },
+          "leftContent": {
+            "columnMatch": "Events",
+            "formatter": 12
+          },
+          "rightContent": {
+            "columnMatch": "NumberLabel",
+            "formatter": 2,
+            "numberFormat": {
+              "unit": 0,
+              "options": {
+                "style": "decimal"
+              }
+            },
+            "tooltipFormat": {}
+          },
+          "secondaryContent": {
+            "columnMatch": "OS",
+            "tooltipFormat": {
+              "tooltip": "OS: {0}"
+            }
+          },
+          "showBorder": true,
+          "size": "auto"
+        }
+      },
+      "name": "query - UserTiles"
+    }    
+  ]
+}

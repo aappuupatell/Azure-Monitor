@@ -1,0 +1,482 @@
+{
+  "version": "Notebook/1.0",
+  "items": [
+    {
+      "type": 1,
+      "content": {
+        "json": "## Sign-ins using legacy authentication\r\nThis workbooks highlights which legacy authentication protocols are used throughout your tenant. Legacy authentication (or basic authentication) protocols do not support multi-factor authentication. Microsoft highly recommends blocking legacy authentication and will be deprecating the use of legacy protocols for Exchange Online."
+      },
+      "customWidth": "70",
+      "name": "text - 0"
+    },
+    {
+      "type": 9,
+      "content": {
+        "version": "KqlParameterItem/1.0",
+        "parameters": [
+          {
+            "id": "d7eea88a-376f-45df-9339-8f064b529a35",
+            "version": "KqlParameterItem/1.0",
+            "name": "Workspace",
+            "type": 5,
+            "isRequired": true,
+            "multiSelect": true,
+            "quote": "'",
+            "delimiter": ",",
+            "typeSettings": {
+              "resourceTypeFilter": {
+                "microsoft.operationalinsights/workspaces": true
+              },
+              "additionalResourceOptions": [
+                "value::all"
+              ]
+            },
+            "timeContext": {
+              "durationMs": 86400000
+            },
+            "defaultValue": "value::all",
+            "value": [
+              "value::all"
+            ]
+          },
+          {
+            "id": "a4a63c13-cca3-40e9-a572-35240c8d6366",
+            "version": "KqlParameterItem/1.0",
+            "name": "Guide",
+            "type": 10,
+            "isRequired": true,
+            "typeSettings": {
+              "additionalResourceOptions": [],
+              "showDefault": false
+            },
+            "jsonData": "[\r\n    {\"value\": \"On\", \"label\": \"On\", \"selected\":true},\r\n    {\"value\": \"Off\", \"label\": \"Off\"}\r\n]"
+          }
+        ],
+        "style": "pills",
+        "queryType": 0,
+        "resourceType": "microsoft.operationalinsights/workspaces"
+      },
+      "customWidth": "30",
+      "name": "parameters - 5"
+    },
+    {
+      "type": 1,
+      "content": {
+        "json": "### Steps to blocking legacy authentication\r\n- Read about [blocking legacy authentication in your tenants](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/new-tools-to-block-legacy-authentication-in-your-organization/ba-p/1225302).\r\n- Understand legacy authentication usage in your tenant using this report.\r\n- [Create a Conditional Access policy](https://docs.microsoft.com/azure/active-directory/conditional-access/block-legacy-authentication) to block legacy authentication. \r\n- Disable basic authentication in [Exchange Online](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online).\r\n"
+      },
+      "conditionalVisibility": {
+        "parameterName": "Guide",
+        "comparison": "isEqualTo",
+        "value": "On"
+      },
+      "name": "text - 6"
+    },
+    {
+      "type": 11,
+      "content": {
+        "version": "LinkItem/1.0",
+        "style": "tabs",
+        "links": [
+          {
+            "id": "51b55d19-33e1-4ce9-99e3-ef4ef8f392f1",
+            "cellValue": "interactive",
+            "linkTarget": "parameter",
+            "linkLabel": "User sign-ins (interactive)",
+            "subTarget": "yes",
+            "preText": "",
+            "style": "link"
+          },
+          {
+            "id": "2e1cc8a6-12b9-43e7-a108-15a9ad3d3365",
+            "cellValue": "interactive",
+            "linkTarget": "parameter",
+            "linkLabel": "User sign-ins (non-interactive)",
+            "subTarget": "no",
+            "style": "link"
+          }
+        ]
+      },
+      "name": "links - 2"
+    },
+    {
+      "type": 9,
+      "content": {
+        "version": "KqlParameterItem/1.0",
+        "parameters": [
+          {
+            "id": "e9e16a64-894c-4422-984e-0aa79948508e",
+            "version": "KqlParameterItem/1.0",
+            "name": "TimeRange",
+            "label": "Time range",
+            "type": 4,
+            "isRequired": true,
+            "value": {
+              "durationMs": 86400000
+            },
+            "typeSettings": {
+              "selectableValues": [
+                {
+                  "durationMs": 3600000
+                },
+                {
+                  "durationMs": 43200000
+                },
+                {
+                  "durationMs": 86400000
+                },
+                {
+                  "durationMs": 172800000
+                },
+                {
+                  "durationMs": 259200000
+                },
+                {
+                  "durationMs": 604800000
+                },
+                {
+                  "durationMs": 1209600000
+                },
+                {
+                  "durationMs": 2419200000
+                },
+                {
+                  "durationMs": 2592000000
+                }
+              ]
+            },
+            "timeContext": {
+              "durationMs": 86400000
+            }
+          },
+          {
+            "id": "95045f76-0a92-4c71-a043-b1ae94654c7a",
+            "version": "KqlParameterItem/1.0",
+            "name": "User",
+            "type": 1,
+            "value": "All users",
+            "label": "User principal name"
+          },
+          {
+            "id": "bc650409-aed8-4a57-858a-e66aae99fcbe",
+            "version": "KqlParameterItem/1.0",
+            "name": "Application",
+            "type": 1,
+            "value": "All applications"
+          },
+          {
+            "id": "fb794c49-1575-4d05-a587-2ac800991e47",
+            "version": "KqlParameterItem/1.0",
+            "name": "Status",
+            "type": 2,
+            "isRequired": true,
+            "value": "Success",
+            "typeSettings": {
+              "additionalResourceOptions": [],
+              "showDefault": false
+            },
+            "jsonData": "[\r\n    {\"value\": \"All\", \"label\": \"All\"},\r\n    {\"value\": \"Success\", \"label\": \"Success\"},\r\n    {\"value\": \"Failure\", \"label\": \"Failure\"}\r\n]"
+          }
+        ],
+        "style": "pills",
+        "queryType": 0,
+        "resourceType": "microsoft.operationalinsights/workspaces"
+      },
+      "name": "parameters - 3"
+    },
+    {
+      "type": 1,
+      "content": {
+        "json": "### Step 1\r\nStart by selecting a legacy authentication protocol from the table below by expanding the row. Then select an application to filter by users accessing that application in **Step 2**."
+      },
+      "customWidth": "60",
+      "name": "text - 8"
+    },
+    {
+      "type": 1,
+      "content": {
+        "json": "### Step 2\r\nSelect a user to see all their legacy auth sign-ins to the selected app in **Step 3** (below)."
+      },
+      "customWidth": "40",
+      "name": "text - 8 - Copy"
+    },
+    {
+      "type": 12,
+      "content": {
+        "version": "NotebookGroup/1.0",
+        "groupType": "editable",
+        "items": [
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "SigninLogs\r\n| project TimeGenerated, UserPrincipalName, ClientAppUsed, Status, AppDisplayName, HomeTenantId, ResourceTenantId\r\n| where TimeGenerated {TimeRange:value}\r\n| where \"{User:escape}\" == \"All users\" or UserPrincipalName has \"{User:escape}\"\r\n| where \"{Application:escape}\" == \"All applications\" or AppDisplayName has \"{Application:escape}\"\r\n| extend status = case(Status.errorCode == 0, \"Success\", \"Failure\")\r\n| where \"{Status}\" == status or \"{Status}\" == \"All\"\r\n| where ClientAppUsed != \"Browser\" and ClientAppUsed != \"Mobile Apps and Desktop clients\"\r\n| where HomeTenantId == ResourceTenantId\r\n| extend Protocol = case(ClientAppUsed != \"\", ClientAppUsed, \"Unknown\")\r\n| summarize Users = dcount(UserPrincipalName) by AppDisplayName, Protocol\r\n| sort by Users desc",
+              "size": 0,
+              "showAnalytics": true,
+              "exportedParameters": [
+                {
+                  "fieldName": "Protocol",
+                  "parameterName": "clientSelected",
+                  "parameterType": 1,
+                  "defaultValue": "All"
+                },
+                {
+                  "fieldName": "AppDisplayName",
+                  "parameterName": "app",
+                  "parameterType": 1,
+                  "defaultValue": "All apps"
+                }
+              ],
+              "showExportToExcel": true,
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "gridSettings": {
+                "formatters": [
+                  {
+                    "columnMatch": "Protocol",
+                    "formatter": 5
+                  }
+                ],
+                "rowLimit": 10000,
+                "hierarchySettings": {
+                  "treeType": 1,
+                  "groupBy": [
+                    "Protocol"
+                  ]
+                }
+              },
+              "sortBy": []
+            },
+            "customWidth": "60",
+            "conditionalVisibility": {
+              "parameterName": "interactive",
+              "comparison": "isEqualTo",
+              "value": "yes"
+            },
+            "name": "query - 1"
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "SigninLogs\r\n| project TimeGenerated, ClientAppUsed, UserPrincipalName, Status, AppDisplayName, HomeTenantId, ResourceTenantId\r\n| where TimeGenerated {TimeRange:value}\r\n| where \"{User:escape}\" == \"All users\" or UserPrincipalName has \"{User:escape}\"\r\n| where \"{Application:escape}\" == \"All applications\" or AppDisplayName has \"{Application:escape}\"\r\n| where \"{app:escape}\" == \"All apps\" or AppDisplayName has \"{app:escape}\"\r\n| extend status = case(Status.errorCode == 0, \"Success\", \"Failure\")\r\n| where \"{Status}\" == status or \"{Status}\" == \"All\"\r\n| where ClientAppUsed != \"Browser\" and ClientAppUsed != \"Mobile Apps and Desktop clients\"\r\n| where HomeTenantId == ResourceTenantId\r\n| extend protocol = case(ClientAppUsed != \"\", ClientAppUsed, \"Unknown\")\r\n| where \"{clientSelected}\" == protocol or \"{clientSelected}\" == \"All\"\r\n| summarize SignIns = count() by UserPrincipalName\r\n| sort by SignIns desc",
+              "size": 0,
+              "showAnalytics": true,
+              "exportFieldName": "UserPrincipalName",
+              "exportParameterName": "user",
+              "showExportToExcel": true,
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "gridSettings": {
+                "rowLimit": 10000,
+                "filter": true
+              }
+            },
+            "customWidth": "40",
+            "conditionalVisibilities": [
+              {
+                "parameterName": "app",
+                "comparison": "isNotEqualTo"
+              },
+              {
+                "parameterName": "clientSelected",
+                "comparison": "isNotEqualTo"
+              }
+            ],
+            "name": "query - 6"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "### Step 3\r\nView all legacy auth sign-ins for the user selected in **Step 2** to understand how legacy auth is being used. "
+            },
+            "name": "text - 3"
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "SigninLogs\r\n| project TimeGenerated, ClientAppUsed, UserPrincipalName, Status, AppDisplayName, ResourceDisplayName, CorrelationId, City = tostring(LocationDetails.city), Country = tostring(LocationDetails.countryOrRegion), IPAddress, HomeTenantId, ResourceTenantId\r\n| where TimeGenerated {TimeRange:value}\r\n| where \"{User:escape}\" == \"All users\" or UserPrincipalName has \"{User:escape}\"\r\n| where \"{user:escape}\" == UserPrincipalName\r\n| where \"{Application:escape}\" == \"All applications\" or AppDisplayName has \"{Application:escape}\"\r\n| where \"{app:escape}\" == \"All apps\" or AppDisplayName has \"{app:escape}\"\r\n| extend status = case(Status.errorCode == 0, \"Success\", \"Failure\")\r\n| where \"{Status}\" == status or \"{Status}\" == \"All\"\r\n| where ClientAppUsed != \"Browser\" and ClientAppUsed != \"Mobile Apps and Desktop clients\"\r\n| where HomeTenantId == ResourceTenantId\r\n| extend Protocol = case(ClientAppUsed != \"\", ClientAppUsed, \"Unknown\")\r\n| where \"{clientSelected}\" == Protocol or \"{clientSelected}\" == \"All\"\r\n| project TimeGenerated, UserPrincipalName, Protocol, AppDisplayName, ResourceDisplayName, status, CorrelationId, City, Country, IPAddress\r\n| sort by TimeGenerated desc",
+              "size": 0,
+              "showAnalytics": true,
+              "showExportToExcel": true,
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "conditionalVisibilities": [
+              {
+                "parameterName": "user",
+                "comparison": "isNotEqualTo"
+              },
+              {
+                "parameterName": "interactive",
+                "comparison": "isEqualTo",
+                "value": "yes"
+              }
+            ],
+            "name": "query - 2"
+          }
+        ]
+      },
+      "conditionalVisibility": {
+        "parameterName": "interactive",
+        "comparison": "isEqualTo",
+        "value": "yes"
+      },
+      "name": "interactive"
+    },
+    {
+      "type": 12,
+      "content": {
+        "version": "NotebookGroup/1.0",
+        "groupType": "editable",
+        "items": [
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "AADNonInteractiveUserSignInLogs\r\n| project TimeGenerated, UserPrincipalName, ClientAppUsed, Status, AppDisplayName, HomeTenantId, ResourceTenantId\r\n| where TimeGenerated {TimeRange:value}\r\n| where \"{User:escape}\" == \"All users\" or UserPrincipalName has \"{User:escape}\"\r\n| where \"{Application:escape}\" == \"All applications\" or AppDisplayName has \"{Application:escape}\"\r\n| extend status = case(Status contains 'errorCode\":0', \"Success\", \"Failure\")\r\n| where \"{Status}\" == status or \"{Status}\" == \"All\"\r\n| where ClientAppUsed != \"Browser\" and ClientAppUsed != \"Mobile Apps and Desktop clients\"\r\n| where HomeTenantId == ResourceTenantId\r\n| extend Protocol = case(ClientAppUsed != \"\", ClientAppUsed, \"Unknown\")\r\n| summarize Users = dcount(UserPrincipalName) by Protocol, AppDisplayName\r\n| sort by Users desc",
+              "size": 0,
+              "showAnalytics": true,
+              "exportedParameters": [
+                {
+                  "fieldName": "Protocol",
+                  "parameterName": "clientSelected",
+                  "parameterType": 1,
+                  "defaultValue": "All"
+                },
+                {
+                  "fieldName": "AppDisplayName",
+                  "parameterName": "app",
+                  "parameterType": 1,
+                  "defaultValue": "All apps"
+                }
+              ],
+              "showExportToExcel": true,
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "gridSettings": {
+                "formatters": [
+                  {
+                    "columnMatch": "Protocol",
+                    "formatter": 5
+                  }
+                ],
+                "rowLimit": 10000,
+                "hierarchySettings": {
+                  "treeType": 1,
+                  "groupBy": [
+                    "Protocol"
+                  ]
+                }
+              }
+            },
+            "customWidth": "60",
+            "conditionalVisibility": {
+              "parameterName": "interactive",
+              "comparison": "isEqualTo",
+              "value": "no"
+            },
+            "name": "query - 1 - Copy"
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "AADNonInteractiveUserSignInLogs\r\n| project TimeGenerated, ClientAppUsed, UserPrincipalName, Status, AppDisplayName, HomeTenantId, ResourceTenantId\r\n| where TimeGenerated {TimeRange:value}\r\n| where \"{User:escape}\" == \"All users\" or UserPrincipalName has \"{User:escape}\"\r\n| where \"{Application:escape}\" == \"All applications\" or AppDisplayName has \"{Application:escape}\"\r\n| where \"{app:escape}\" == \"All apps\" or AppDisplayName has \"{app:escape}\"\r\n| extend status = case(Status contains 'errorCode\":0', \"Success\", \"Failure\")\r\n| where \"{Status}\" == status or \"{Status}\" == \"All\"\r\n| where ClientAppUsed != \"Browser\" and ClientAppUsed != \"Mobile Apps and Desktop clients\"\r\n| where HomeTenantId == ResourceTenantId\r\n| extend clientApp = case(ClientAppUsed != \"\", ClientAppUsed, \"Unknown\")\r\n| where \"{clientSelected}\" == clientApp  or \"{clientSelected}\" == \"All\"\r\n| summarize SignIns = count() by UserPrincipalName\r\n| sort by SignIns desc",
+              "size": 0,
+              "showAnalytics": true,
+              "exportFieldName": "UserPrincipalName",
+              "exportParameterName": "user",
+              "showExportToExcel": true,
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "gridSettings": {
+                "rowLimit": 10000,
+                "filter": true
+              }
+            },
+            "customWidth": "40",
+            "conditionalVisibilities": [
+              {
+                "parameterName": "interactive",
+                "comparison": "isEqualTo",
+                "value": "no"
+              },
+              {
+                "parameterName": "app",
+                "comparison": "isNotEqualTo"
+              },
+              {
+                "parameterName": "clientSelected",
+                "comparison": "isNotEqualTo"
+              }
+            ],
+            "name": "query - 6 - Copy"
+          },
+          {
+            "type": 1,
+            "content": {
+              "json": "### Step 3\r\nView all legacy auth sign-ins for the selected user to understand how legacy auth is being used.\r\n\r\n"
+            },
+            "conditionalVisibility": {
+              "parameterName": "interactive",
+              "comparison": "isNotEqualTo",
+              "value": "yes"
+            },
+            "name": "text - 3"
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "AADNonInteractiveUserSignInLogs\r\n| project TimeGenerated, ClientAppUsed, UserPrincipalName, Status, AppDisplayName, ResourceDisplayName, CorrelationId, IPAddress, Location, HomeTenantId, ResourceTenantId\r\n| where TimeGenerated {TimeRange:value}\r\n| where \"{User:escape}\" == \"All users\" or UserPrincipalName has \"{User:escape}\"\r\n| where \"{user:escape}\" == UserPrincipalName\r\n| where \"{Application:escape}\" == \"All applications\" or AppDisplayName has \"{Application:escape}\"\r\n| where \"{app:escape}\" == \"All apps\" or AppDisplayName has \"{app:escape}\"\r\n| extend status = case(Status contains 'errorCode\":0', \"Success\", \"Failure\")\r\n| where \"{Status}\" == status or \"{Status}\" == \"All\"\r\n| where ClientAppUsed != \"Browser\" and ClientAppUsed != \"Mobile Apps and Desktop clients\"\r\n| where HomeTenantId == ResourceTenantId\r\n| extend Protocol = case(ClientAppUsed != \"\", ClientAppUsed, \"Unknown\")\r\n| where \"{clientSelected}\" == Protocol or \"{clientSelected}\" == \"All\"\r\n| project TimeGenerated, UserPrincipalName, Protocol, AppDisplayName, ResourceDisplayName, status, CorrelationId, IPAddress, Location\r\n| sort by TimeGenerated desc",
+              "size": 0,
+              "showAnalytics": true,
+              "showExportToExcel": true,
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "crossComponentResources": [
+                "{Workspace}"
+              ],
+              "gridSettings": {
+                "rowLimit": 10000
+              }
+            },
+            "conditionalVisibilities": [
+              {
+                "parameterName": "user",
+                "comparison": "isNotEqualTo"
+              },
+              {
+                "parameterName": "interactive",
+                "comparison": "isEqualTo",
+                "value": "no"
+              }
+            ],
+            "name": "query - 2"
+          }
+        ]
+      },
+      "name": "noninteractive"
+    }
+  ],
+  "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/workbook.json"
+}
