@@ -39,7 +39,7 @@
             "queryType": 1,
             "resourceType": "microsoft.resourcegraph/resources",
             "label": "☁️ Subscription",
-            "value": "/subscriptions/2a1051a5-feab-477b-b033-ea6b4634a1b3"
+            "value": "/subscriptions/00000000-0000-0000-0000-000000000000"
           },
           {
             "id": "e94aafa3-c5d9-4523-89f0-4e87aa754511",

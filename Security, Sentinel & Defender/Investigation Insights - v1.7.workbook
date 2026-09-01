@@ -86,8 +86,8 @@
             "queryType": 1,
             "resourceType": "microsoft.resourcegraph/resources",
             "value": [
-              "/subscriptions/0c175d69-5265-4d9c-b675-be1509d34024/resourceGroups/rmdk-prod-oms-rg/providers/Microsoft.OperationalInsights/workspaces/RMDK-PROD-OMS",
-              "/subscriptions/8ffb8c5b-ee62-4e73-a0e8-0eda6f758eec/resourceGroups/AZ-PRD-UW-RG-SecLogs/providers/Microsoft.OperationalInsights/workspaces/AZ-PRD-UW-LAW-Sentinel"
+              "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder-rg/providers/Microsoft.OperationalInsights/workspaces/placeholder-workspace",
+              "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder-rg/providers/Microsoft.OperationalInsights/workspaces/placeholder-workspace"
             ]
           },
           {
@@ -5773,7 +5773,7 @@
     }
   ],
   "fallbackResourceIds": [
-    "/subscriptions/4defa7d0-bc3a-4935-a1e6-e58406cf75e2/resourcegroups/qc-prod-rg/providers/microsoft.operationalinsights/workspaces/qc-prod"
+    "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/placeholder-rg/providers/microsoft.operationalinsights/workspaces/placeholder-workspace"
   ],
   "fromTemplateId": "Community-Workbooks/Microsoft Sentinel - Workbooks/Investigation Insights",
   "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/workbook.json"

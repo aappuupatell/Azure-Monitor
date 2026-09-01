@@ -578,7 +578,7 @@
                     {
                       "name": "resourceId",
                       "source": "cell",
-                      "value": "%2Fsubscriptions%2F3b5bc982-20bc-4b59-b1ca-f8488bb86736%2FresourceGroups%2Fdemo%2Fproviders%2FMicrosoft.HybridCompute%2Fmachines%2FW2019"
+                      "value": "%2Fsubscriptions%2F00000000-0000-0000-0000-000000000000%2FresourceGroups%2Fplaceholder-rg%2Fproviders%2FMicrosoft.HybridCompute%2Fmachines%2Fplaceholder-resource"
                     }
                   ]
                 },

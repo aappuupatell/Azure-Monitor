@@ -12,7 +12,7 @@
             "name": "Subscription",
             "type": 6,
             "isRequired": true,
-            "value": "/subscriptions/2959f496-711b-447e-9b85-53a1da341c4c",
+            "value": "/subscriptions/00000000-0000-0000-0000-000000000000",
             "typeSettings": {
               "additionalResourceOptions": [],
               "includeAll": false
@@ -36,7 +36,7 @@
             },
             "queryType": 1,
             "resourceType": "microsoft.resourcegraph/resources",
-            "value": "/subscriptions/2959f496-711b-447e-9b85-53a1da341c4c/resourceGroups/RodAzureSentinel/providers/Microsoft.OperationalInsights/workspaces/RodAzureSentinelWorkspace"
+            "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder-rg/providers/Microsoft.OperationalInsights/workspaces/placeholder-workspace"
           },
           {
             "id": "c4b69c01-2263-4ada-8d9c-43433b739ff3",
@@ -2207,7 +2207,7 @@
     }
   ],
   "fallbackResourceIds": [
-    "/subscriptions/2959f496-711b-447e-9b85-53a1da341c4c/resourcegroups/rodazuresentinel/providers/microsoft.operationalinsights/workspaces/rodazuresentinelworkspace"
+    "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/placeholder-rg/providers/microsoft.operationalinsights/workspaces/placeholder-workspace"
   ],
   "fromTemplateId": "sentinel-UserWorkbook",
   "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/workbook.json"

@@ -3388,7 +3388,7 @@
     }
   ],
   "fallbackResourceIds": [
-    "/subscriptions/4defa7d0-bc3a-4935-a1e6-e58406cf75e2/resourcegroups/qc-prod-rg/providers/microsoft.operationalinsights/workspaces/qc-prod"
+    "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/placeholder-rg/providers/microsoft.operationalinsights/workspaces/placeholder-workspace"
   ],
   "fromTemplateId": "sentinel-PaloAltoOverview",
   "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/workbook.json"

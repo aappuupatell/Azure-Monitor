@@ -1,0 +1,29 @@
+name: Validate workbooks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate workbook JSON and check for leaked resource IDs
+        run: python scripts/validate_workbooks.py
+
+      - name: Check placeholders are in use
+        run: python scripts/scrub_resource_ids.py --check
+
+      - name: Check CATALOG.md is up to date
+        run: python scripts/build_catalog.py --check

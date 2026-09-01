@@ -105,7 +105,7 @@
       "content": {
         "version": "KqlParameterItem/1.0",
         "crossComponentResources": [
-          "/subscriptions/5e303868-677c-4b4f-b2e8-4b288932f6d4/resourcegroups/securityrg/providers/microsoft.operationalinsights/workspaces/securityworkspace"
+          "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/placeholder-rg/providers/microsoft.operationalinsights/workspaces/placeholder-workspace"
         ],
         "parameters": [
           {

@@ -124,7 +124,7 @@
             "queryType": 1,
             "resourceType": "microsoft.resourcegraph/resources",
             "value": [
-              "/subscriptions/4defa7d0-bc3a-4935-a1e6-e58406cf75e2"
+              "/subscriptions/00000000-0000-0000-0000-000000000000"
             ]
           },
           {

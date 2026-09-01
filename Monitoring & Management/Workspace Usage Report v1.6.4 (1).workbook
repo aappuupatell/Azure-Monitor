@@ -49,7 +49,7 @@
             "crossComponentResources": [
               "{Subscription}"
             ],
-            "value": "/subscriptions/4defa7d0-bc3a-4935-a1e6-e58406cf75e2/resourceGroups/QC-PROD-RG/providers/Microsoft.OperationalInsights/workspaces/QC-Prod",
+            "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder-rg/providers/Microsoft.OperationalInsights/workspaces/placeholder-workspace",
             "typeSettings": {
               "resourceTypeFilter": {
                 "microsoft.operationalinsights/workspaces": true

@@ -1531,7 +1531,7 @@
     }
   ],
   "fallbackResourceIds": [
-    "/subscriptions/1c252cf0-2140-4605-8501-932fcc039e0a/resourcegroups/sentinel/providers/microsoft.operationalinsights/workspaces/nyc3-sentinel"
+    "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/placeholder-rg/providers/microsoft.operationalinsights/workspaces/placeholder-workspace"
   ],
   "fromTemplateId": "sentinel-UserWorkbook",
   "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/workbook.json"
