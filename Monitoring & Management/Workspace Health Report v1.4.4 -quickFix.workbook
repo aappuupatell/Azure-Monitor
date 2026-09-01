@@ -91,7 +91,7 @@
             "crossComponentResources": [
               "{Subscription}"
             ],
-            "value": "/subscriptions/7b76bfbc-cb1e-4df1-b6e8-b826eef6c592/resourceGroups/soc/providers/microsoft.operationalinsights/workspaces/cybersecuritysoc",
+            "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder-rg/providers/microsoft.operationalinsights/workspaces/placeholder-workspace",
             "typeSettings": {
               "resourceTypeFilter": {
                 "microsoft.operationalinsights/workspaces": true

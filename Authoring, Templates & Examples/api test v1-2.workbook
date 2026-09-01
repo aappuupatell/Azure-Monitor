@@ -30,7 +30,7 @@
             "crossComponentResources": [
               "{Subscription}"
             ],
-            "value": "/subscriptions/44e4eff8-1fcb-4a22-a7d6-992ac7286382/resourceGroups/soc/providers/Microsoft.OperationalInsights/workspaces/CyberSecurityDemo",
+            "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder-rg/providers/Microsoft.OperationalInsights/workspaces/placeholder-workspace",
             "typeSettings": {
               "additionalResourceOptions": []
             },

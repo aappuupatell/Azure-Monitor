@@ -1840,7 +1840,7 @@
                   },
                   "queryType": 1,
                   "resourceType": "microsoft.resourcegraph/resources",
-                  "value": "/subscriptions/6964aee8-2b05-4f32-9a77-0c73217fe10d/resourcegroups/quorumacademy/providers/microsoft.operationalinsights/workspaces/quorumacademy"
+                  "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/placeholder-rg/providers/microsoft.operationalinsights/workspaces/placeholder-workspace"
                 },
                 {
                   "id": "c2494755-05cc-4b93-b253-e8a0d4b7c899",

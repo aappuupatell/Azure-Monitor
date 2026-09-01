@@ -38,7 +38,7 @@
             },
             "queryType": 1,
             "resourceType": "microsoft.resourcegraph/resources",
-            "value": "/subscriptions/2959f496-711b-447e-9b85-53a1da341c4c"
+            "value": "/subscriptions/00000000-0000-0000-0000-000000000000"
           },
           {
             "id": "e94aafa3-c5d9-4523-89f0-4e87aa754511",
@@ -49,7 +49,7 @@
             "crossComponentResources": [
               "{Subscription}"
             ],
-            "value": "/subscriptions/2959f496-711b-447e-9b85-53a1da341c4c/resourceGroups/RodAzureSentinel/providers/Microsoft.OperationalInsights/workspaces/RodAzureSentinelWorkspace",
+            "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder-rg/providers/Microsoft.OperationalInsights/workspaces/placeholder-workspace",
             "typeSettings": {
               "resourceTypeFilter": {
                 "microsoft.operationalinsights/workspaces": true

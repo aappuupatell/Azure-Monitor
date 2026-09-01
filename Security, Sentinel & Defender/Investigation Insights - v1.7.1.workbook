@@ -83,7 +83,7 @@
             "queryType": 1,
             "resourceType": "microsoft.resourcegraph/resources",
             "value": [
-              "/subscriptions/0db680e0-6664-4cda-bdfd-58a5b44598b8/resourceGroups/soc-pfp-qcyber-rg/providers/Microsoft.OperationalInsights/workspaces/soc-pfp-qcyber-ws"
+              "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder-rg/providers/Microsoft.OperationalInsights/workspaces/placeholder-workspace"
             ]
           },
           {
@@ -6101,7 +6101,7 @@
     }
   ],
   "fallbackResourceIds": [
-    "/subscriptions/4defa7d0-bc3a-4935-a1e6-e58406cf75e2/resourcegroups/qc-prod-rg/providers/microsoft.operationalinsights/workspaces/qc-prod"
+    "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/placeholder-rg/providers/microsoft.operationalinsights/workspaces/placeholder-workspace"
   ],
   "fromTemplateId": "Community-Workbooks/Microsoft Sentinel - Workbooks/Investigation Insights",
   "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/workbook.json"

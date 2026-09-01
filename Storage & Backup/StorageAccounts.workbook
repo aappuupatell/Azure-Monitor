@@ -81,7 +81,7 @@
             "name": "Username",
             "type": 2,
             "query": "AzureActivity\r\n| extend User = tostring(Caller)\r\n| distinct User",
-            "value": "rodtrent@sixmilliondollarman.onmicrosoft.com",
+            "value": "user@example.com",
             "typeSettings": {
               "additionalResourceOptions": []
             },

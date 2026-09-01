@@ -16,7 +16,7 @@
             "quote": "'",
             "delimiter": ",",
             "value": [
-              "/subscriptions/d1d8779d-38d7-4f06-91db-9cbc8de0176f"
+              "/subscriptions/00000000-0000-0000-0000-000000000000"
             ],
             "typeSettings": {
               "additionalResourceOptions": [],
@@ -38,7 +38,7 @@
             },
             "queryType": 1,
             "resourceType": "microsoft.resourcegraph/resources",
-            "value": "/subscriptions/d1d8779d-38d7-4f06-91db-9cbc8de0176f/resourceGroups/soc/providers/Microsoft.OperationalInsights/workspaces/cybersecuritysoc"
+            "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder-rg/providers/Microsoft.OperationalInsights/workspaces/placeholder-workspace"
           },
           {
             "id": "9fa77675-1222-4936-89d0-285da325bba0",

@@ -1306,7 +1306,7 @@
                   "timeContextFromParameter": "TimeRange2",
                   "queryType": 0,
                   "resourceType": "microsoft.operationalinsights/workspaces",
-                  "value": "cgreg@woodgrove.ms"
+                  "value": "user@example.com"
                 }
               ],
               "style": "pills",

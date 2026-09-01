@@ -11,7 +11,7 @@
             "version": "KqlParameterItem/1.0",
             "name": "Subscription",
             "type": 6,
-            "value": "/subscriptions/7b76bfbc-cb1e-4df1-b6e8-b826eef6c592",
+            "value": "/subscriptions/00000000-0000-0000-0000-000000000000",
             "typeSettings": {
               "additionalResourceOptions": [],
               "includeAll": false
@@ -26,7 +26,7 @@
             "crossComponentResources": [
               "{Subscription}"
             ],
-            "value": "/subscriptions/7b76bfbc-cb1e-4df1-b6e8-b826eef6c592/resourceGroups/SOC/providers/Microsoft.OperationalInsights/workspaces/CyberSecuritySOC",
+            "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder-rg/providers/Microsoft.OperationalInsights/workspaces/placeholder-workspace",
             "typeSettings": {
               "additionalResourceOptions": []
             },
